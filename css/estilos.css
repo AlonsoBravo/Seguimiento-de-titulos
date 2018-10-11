@@ -35,6 +35,11 @@ h2{
   padding: 2px 10px;
 }
 
+a,
+a:hover {
+  text-decoration: none !important;
+}
+
 /** LOGIN **/
 
 .logo{
@@ -133,3 +138,31 @@ label{
   visibility: visible;
   opacity: 1;
 }
+
+
+/** LISTADO DE PROYECTOS **/
+
+.navegacion{
+  width: 67%;
+  float:right;
+  text-align: right;
+  display: block;
+  padding-bottom: 20px;
+  margin-bottom: 20px; 
+}
+
+.navegacion a{
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px 0;
+
+}
+
+.navegacion a:last-child{
+  margin-right: 0;
+}
+
+.navegacion a:hover{
+  color: #ffffff;
+}
+
