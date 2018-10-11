@@ -173,3 +173,13 @@ label{
   font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
 }
+
+/** REGISTRO DE HITOS **/
+
+.datos_proyecto{
+  margin: 40px auto 0 auto;
+  border-top: 5px solid #00b13c;
+}
+.nombre_proyecto{
+  /** AGREGAR FUENTES **/
+}
