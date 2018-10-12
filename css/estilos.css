@@ -35,7 +35,11 @@ a,
 a:hover {
   text-decoration: none !important;
 }
-
+.opcion{
+  border: 2px solid #00b13c;
+  border-radius: 20px;
+  padding: 5px 7px;
+}
 /** LOGIN **/
 
 .logo{
@@ -176,10 +180,74 @@ label{
 
 /** REGISTRO DE HITOS **/
 
-.datos_proyecto{
-  margin: 40px auto 0 auto;
+.registro{
   border-top: 5px solid #00b13c;
+  position: relative;
+  margin: 40px auto 0 auto;
 }
-.nombre_proyecto{
-  /** AGREGAR FUENTES **/
+.datos_proyecto{
+  margin-top: 40px;
+  float: left;
+  width: 35%;
+  border-right: 2px solid #00b13c;
+}
+.nombres_participantes,
+.seccion_curso,
+.fecha_ultimo_hito,
+.fecha_entrega_hito,
+.estado_hito,
+.valoracion_hito{
+  text-align: left;
+  position: relative;
+  margin-top: 15px;
+}
+.titulo{
+  width: 30%;
+  float: left;
+}
+.nombres{
+  float: right;
+  text-align: left;
+  position: relative;
+  width: 70%;
+}
+.nombres span::after{
+  content: '\A';
+  white-space: pre;
+}
+.registo_hito{
+  margin-top: 40px;
+  float: right;
+  width: 65%;
+  padding-left: 20px;
+}
+.nombre_seccion{
+  float: right;
+  width: 70%;
+  position: relative;
+  text-align: left;
+}
+.fecha span, .fecha input{
+    border: 2px solid #00b13c;
+    border-radius: 20px;
+    padding: 5px 7px;
+}
+.descripcion_hito, .feedback{
+  margin-bottom: 20px;
+}
+.descripcion_hito textarea, .feedback textarea{
+  width: 80%;
+  height: 120px;
+  border: 2px solid #00b13c;
+  border-radius: 10px;
+}
+.guardar_hito{
+  text-align: right;
+  width: 80%;
+}
+.guardar:hover{
+  background: #ffffff;
+  color: #00b13c;
+  transition: all .5s ease;
+  cursor: pointer;
 }
