@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 		<title>Ingreso de Proyecto</title>
-		<link rel="stylesheet" href="css/estilos.css">
+		<link rel="stylesheet" href="../../public/css/estilos.css">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
 	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -12,7 +12,7 @@
 	<body>
 	<div class="contenedor clearfix">
 		<div class="logo">
-			<img class="logo" src="img/logo.jpg" alt="logo">
+			<img class="logo" src="../../public/img/logo.jpg" alt="logo">
 		</div>
 
 		<div>

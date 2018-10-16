@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Login</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="../../public/css/estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   </head>
   <body>
     <div class="contenedor">
-      <img class="logo" src="img/logo.jpg" alt="logo">
+      <img class="logo" src="../../public/img/logo.jpg" alt="logo">
       <form class="fomulario_ingreso_usuario" action="" method="post">
         <div class="ingreso_usuario  clearfix">
           <h2>ingreso de usuarios</h2>
@@ -33,7 +33,7 @@
       </form><!-- .fomulario_ingreso_usuario -->
     </div><!-- .contenedor -->
 
-  <script src="js/script.js"> </script>
+  <script src="../../public/js/script.js"> </script>
 
   </body>
 </html>
