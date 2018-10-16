@@ -18,7 +18,7 @@
 		<div>
 			<nav class="navegacion clearfix">
 				<a href="#" class="button">Inicio</a>
-				<a href="#" class="button">Cursos</a>
+				<a href="lista_curso.php" class="button">Cursos</a>
 				<a href="#" class="button">Proyectos</a>
 				<a href="#" class="button">Informes</a>
 				<a href="#" class="button">Ayuda</a>
