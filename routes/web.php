@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+});
+
+Route::get('/lista_curso', function(){
+  return view ('lista_curso');
+});
+
+Route::get ('/ingreso_proyecto', function(){
+  return view ('ingreso_proyecto');
+});
+
+Route::get('/registro_hito', function(){
+  return view('registro_hito');
 });

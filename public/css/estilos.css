@@ -251,6 +251,10 @@ label{
   transition: all .5s ease;
   cursor: pointer;
 }
+.estado_hito select, .valoracion_hito select{
+  width: 70%;
+  padding: 5px 7px;
+}
 
 /** REGISTRO DE PROYECTOS **/
 
