@@ -31,6 +31,12 @@ h2{
   color: #FFFFFF;
   padding: 2px 10px;
 }
+.button:hover{
+  background: #ffffff;
+  color: #00b13c;
+  transition: all .5s ease;
+  cursor: pointer;
+}
 a,
 a:hover {
   text-decoration: none !important;
@@ -38,7 +44,8 @@ a:hover {
 .opcion{
   border: 2px solid #00b13c;
   border-radius: 20px;
-  padding: 5px 100px;
+  padding: 5px 0;
+  text-indent: 5px
 }
 /** LOGIN **/
 
@@ -85,11 +92,6 @@ label{
 .ingresar{
   margin-right: 20px;
   float: right;
-}
-.ingresar:hover{
-  background: #ffffff;
-  color: #00b13c;
-  transition: all .5s ease;
 }
 .contenedor_contraseña{
   position: relative;
@@ -140,7 +142,7 @@ label{
 }
 
 
-/** LISTADO DE PROYECTOS **/
+/** NAVEGACION **/
 
 .navegacion{
   width: 67%;
@@ -245,60 +247,52 @@ label{
   text-align: right;
   width: 80%;
 }
-.guardar:hover{
-  background: #ffffff;
-  color: #00b13c;
-  transition: all .5s ease;
-  cursor: pointer;
-}
 .estado_hito select, .valoracion_hito select{
   width: 70%;
-  padding: 5px 7px;
+  text-indent: 5px;
 }
 
 /** REGISTRO DE PROYECTOS **/
 
-.formulario_proyecto{
+.formulario_creacion_proyecto{
   margin: 40px auto 0 auto;
   border-top: 5px solid #00b13c;
 }
-
+.datos_creacion_proyecto{
+  width: 40%;
+  margin-top: 20px;
+  float: left;
+}
 .nombre_proyecto,
-.nombre_de_proyecto,
-.codigo_cursos,
+.codigo_curso,
+.asignacion_alumno{
+  margin-bottom: 15px;
+  margin-right: 20px;
+}
+.nom_proyecto{
+  border-radius: 20px;
+  border: 2px solid #00b13c;
+  padding: 5px 7px;
+  width: 100%;
+}
 .codigo,
-.alumnos,
-.asignar_alumnos{
-  text-align: left;
-  position: relative;
-  margin-top: 15px;
-}
-.titulo_proyecto input{
-    border: 2px solid #00b13c;
-    border-radius: 20px;
-    padding: 5px 85px;
-    margin-top: 15px;
-}
-.datos_alumnos{
-  position: relative;
-  float: left;
-  width: 50%
-}
-.grupos{
-  float: right;
-  text-align: left;
-  width: 50%;
-}
-.grupo_alumnos span::after{
-  content: '\A';
-  white-space: pre;
-}
-.nombre_alumnos{
-  float: left;
-}
-.grupo_alumnos{
+.asignacion,
+.ingreso_nombre_proyecto{
+  width: 70%;
   float: right;
 }
-.guardar_proyecto{
+.codigo select,
+.proyecto,
+.asignacion select{
+  width: 100%;
+}
+.crear_proyecto{
+  position: relative;
+  float: right;
+  margin-right: 20px;
+}
+.grupos_proyectos{
+  border-left: 2px solid #00b13c;
+  width: 60%;
   float: right;
 }
