@@ -16,8 +16,7 @@
           <img class="logo" src="img/logo.jpg" alt="logo">
         </div>
     <nav class="navegacion clearfix">
-      <a href="#" class="button">Inicio</a>
-      <a href="lista_curso" class="button">Cursos</a>
+      <a href="lista_curso" class="button">Lista de proyectos</a>
       <a href="ingreso_proyecto" class="button">Crear Proyecto</a>
       <a href="#" class="button">Informes</a>
       <a href="#" class="button">Ayuda</a>

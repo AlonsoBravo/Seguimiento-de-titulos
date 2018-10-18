@@ -262,18 +262,13 @@ label{
   margin: 40px auto 0 auto;
   border-top: 5px solid #00b13c;
 }
-.formulario_de_proyecto{
-  margin-top: 40px;
-  float: left;
-  width: 35%;
-}
+
 .nombre_proyecto,
 .nombre_de_proyecto,
 .codigo_cursos,
 .codigo,
 .alumnos,
-.asignar_alumnos,
-.guardar_proyecto{
+.asignar_alumnos{
   text-align: left;
   position: relative;
   margin-top: 15px;
@@ -283,4 +278,27 @@ label{
     border-radius: 20px;
     padding: 5px 85px;
     margin-top: 15px;
+}
+.datos_alumnos{
+  position: relative;
+  float: left;
+  width: 50%
+}
+.grupos{
+  float: right;
+  text-align: left;
+  width: 50%;
+}
+.grupo_alumnos span::after{
+  content: '\A';
+  white-space: pre;
+}
+.nombre_alumnos{
+  float: left;
+}
+.grupo_alumnos{
+  float: right;
+}
+.guardar_proyecto{
+  float: right;
 }
