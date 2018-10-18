@@ -16,9 +16,16 @@
           <img class="logo" src="img/logo.jpg" alt="logo">
         </div>
     <nav class="navegacion clearfix">
-      <a href="lista_curso" class="button">Lista de proyectos</a>
-      <a href="ingreso_proyecto" class="button">Crear Proyecto</a>
-      <a href="#" class="button">Informes</a>
-      <a href="#" class="button">Ayuda</a>
+      <ul>
+       <li><a href="lista_curso" class="button">Lista de proyectos</a></li>
+       <li><a href="ingreso_proyecto" class="button">Crear Proyecto</a></li>
+       <li><a href="#" class="button">Menú</a>
+          <ul>
+            <li><a href="#" class="button">Informes</a></li>
+            <li><a href="#" class="button">Ayuda</a></li>
+            <li><a href="#" class="button">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
     </nav><!--.navegacion-->
 @endsection

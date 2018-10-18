@@ -6,7 +6,7 @@
     display: table;
 }
 .contenedor{
-  width: 98%;
+  width: 95%;
   margin: 0 auto;
 }
 html{
@@ -104,7 +104,7 @@ label{
   cursor: pointer;
 }
 
-/** TEXTTO MOSTRAR CONTRASEÑA **/
+/** TEXTO MOSTRAR CONTRASEÑA **/
 
 .tooltip{
   position: absolute;
@@ -141,39 +141,47 @@ label{
   opacity: 1;
 }
 
-
 /** NAVEGACION **/
 
-.navegacion{
-  width: 67%;
-  float:right;
-  text-align: right;
+nav{
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  border-bottom: 5px solid #00b13c;
+}
+nav ul{
+  list-style: none;
+  float: right;
+}
+nav > ul > li{
+  float: left;
+}
+nav ul::after{
+  content: '';
   display: block;
-  margin-bottom: 20px;
+  clear: both;
 }
-.navegacion a{
+nav ul li a{
+  display: inline-block;
+  width: 200px;
   text-decoration: none;
-  padding: 10px 10px;
-  background-color: #ffffff;
-  color: #00b13c;
-  border-color: #ffffff;
+  text-align: center;
+  border-radius: 0!important;
 }
-.navegacion a:last-child{
-  margin-right: 0;
+nav ul ul{
+  position: absolute;
+  top: 70%;
+  display: none;
+  right: 0px;
 }
-.navegacion a:hover{
-  color: #ffffff;
-  background-color: #00b13c;
-  border-radius: 5px;
-  border-color: #00b13c;
-  transition: all ease .6s;
+nav ul li:hover > ul{
+  display: block;
 }
 
 /** LISTA DE CURSOS **/
 
 .lista_cursos{
-  margin: 40px auto 0 auto;
-  border-top: 5px solid #00b13c;
+  margin: 10px auto 0 auto;
 }
 .table th{
   font-family: 'Oswald', sans-serif;
@@ -182,13 +190,8 @@ label{
 
 /** REGISTRO DE HITOS **/
 
-.registro{
-  border-top: 5px solid #00b13c;
-  position: relative;
-  margin: 40px auto 0 auto;
-}
 .datos_proyecto{
-  margin-top: 40px;
+  margin-top: 20px;
   float: left;
   width: 35%;
   border-right: 2px solid #00b13c;
@@ -218,7 +221,7 @@ label{
   white-space: pre;
 }
 .registo_hito{
-  margin-top: 40px;
+  margin-top: 20px;
   float: right;
   width: 65%;
   padding-left: 20px;
@@ -254,10 +257,6 @@ label{
 
 /** REGISTRO DE PROYECTOS **/
 
-.formulario_creacion_proyecto{
-  margin: 40px auto 0 auto;
-  border-top: 5px solid #00b13c;
-}
 .datos_creacion_proyecto{
   width: 40%;
   margin-top: 20px;
