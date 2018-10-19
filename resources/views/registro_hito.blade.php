@@ -120,6 +120,7 @@
 
 				</div><!-- .registro -->
 			</form><!-- .formulario_hito -->
+			
 @include('layouts.footer')
 
 @yield('footer')

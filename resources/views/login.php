@@ -25,7 +25,7 @@
               <br>
             </div>
           </div>
-          <div>
+          <div class="guardar_usuario">
             <input class="recordar_usuario" type="checkbox" name="recordar_usuario"><label>Recuerdame en este equipo</label>
             <a href="#" class="button ingresar">Ingresar</a>
           </div>

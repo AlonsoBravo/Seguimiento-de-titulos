@@ -14,7 +14,21 @@
   		<div class="contenedor clearfix">
         <div class="logo">
           <img class="logo" src="img/logo.jpg" alt="logo">
+      </div>
+      <div class="menu_movil clearfix">
+        <div class="boton_menu" onclick="abrirMenuMovil();">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+        <div id="elementos-menu-movil" class="elementos-menu-movil">
+          <a href="lista_curso" class="button">Lista de proyectos</a>
+          <a href="ingreso_proyecto" class="button">Crear Proyecto</a>
+          <a href="#" class="button">Informes</a>
+          <a href="#" class="button">Ayuda</a>
+          <a href="#" class="button">Cerrar sesión</a>
+        </div>
+      </div>
     <nav class="navegacion clearfix">
       <ul>
        <li><a href="lista_curso" class="button">Lista de proyectos</a></li>
