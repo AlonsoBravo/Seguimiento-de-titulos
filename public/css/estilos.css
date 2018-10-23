@@ -52,13 +52,6 @@ a:hover {
   width: 150px;
   height: 90px;
 }
-@media only screen and (min-width:768px){
-  .logo{
-    margin: 10px 0 0 10px;
-    width: 230px;
-    height: 130px;
-  }
-}
 .ingreso_usuario{
   text-align: center;
   border: 5px solid #00b13c;
@@ -75,17 +68,6 @@ a:hover {
   text-transform: uppercase;
   text-align: center;
 }
-@media only screen and (min-width:768px){
-  .ingreso_usuario{
-    text-align: center;
-    border: 5px solid #00b13c;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 550px;
-    padding-bottom: 20px;
-  }
-}
 .usuario, .contraseña{
   padding: 2px 10px ;
   border: 2px solid #00b13c;
@@ -96,34 +78,9 @@ a:hover {
   margin-right: 2px;
   margin-bottom: 5px
 }
-@media only screen and (min-width:768px){
-  .usuario{
-    padding: 2px 10px ;
-    border: 2px solid #00b13c;
-    border-radius: 20px;
-    width: 50%;
-    font-size: 1.2em;
-    margin-bottom: 10px
-  }
-  .contraseña{
-   padding: 2px 10px ;
-   border: 2px solid #00b13c;
-   border-radius: 20px;
-   width: 50%;
-   font-size: 1.2em;
-   margin-bottom: 25px
-  }
-}
 .recordar_usuario{
   float: left;
   margin-right: auto;
-}
-@media only screen and (min-width:768px){
-  .recordar_usuario{
-    float: left;
-    margin-left: 80px;
-    margin-top: 6px;
-  }
 }
 label{
   float: left;
@@ -134,12 +91,6 @@ label{
   margin-right: 15px;
   float: right;
   margin-top: 10px;
-}
-@media only screen and (min-width:768px){
-  .ingresar{
-    margin-right: 20px;
-    float: right;
-  }
 }
 .contenedor_contraseña{
   position: relative;
@@ -160,14 +111,6 @@ label{
   right: 40px;
   bottom: 18px;
 }
-@media only screen and (min-width:768px){
-  .tooltip{
-    position: relative;
-    display: inline-block;
-    right: 45px;
-    bottom: 12px;
-  }
-}
 .tooltip .tooltiptext{
   visibility: hidden;
   width: 120px;
@@ -184,6 +127,279 @@ label{
   opacity: 0;
   transition: opacity 0.3s;
 }
+.tooltip .tooltiptext::after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 28px;
+  margin-left: -50px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.tooltip:hover .tooltiptext{
+  visibility: visible;
+  opacity: 1;
+}
+
+/** NAVEGACION **/
+
+  nav{
+    display: none;
+  }
+  nav ul{
+    display: none;
+  }
+
+/** MENU MOVIL **/
+
+div.menu_movil{
+  max-height: 120px;
+  position: relative;
+}
+div.boton_menu{
+    width: 60px;
+    display: block;
+    float: right;
+    text-align: right;
+    margin-top: 12px;
+}
+div.boton_menu:hover{
+    cursor: pointer;
+}
+div.boton_menu span{
+    height: 8px;
+    margin-bottom: 6px;
+    background-color: #00b13c;
+    display: block;
+}
+div.elementos-menu-movil{
+  position: absolute;
+  display: inline-grid;
+  right: 0;
+  top: 100%;
+  visibility: hidden;
+  z-index: 1;
+}
+div.elementos-menu-movil a{
+  border-radius: 0;
+}
+/** LISTA DE CURSOS **/
+
+.lista_cursos{
+  display: none;
+}
+.table{
+  font-size: 12px;
+}
+table.table th{
+  text-align: center;
+}
+.table th{
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+}
+
+/** REGISTRO DE HITOS **/
+
+.formulario_hito{
+  display: none;
+}
+.nombre_proyecto,
+.fecha_entrega_hito,
+.estado_hito,
+.valoracion_hito,
+.descripcion_hito,
+.codigo_curso,
+.asignacion_alumno{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-top: 2px solid #909F96;
+}
+.fecha_entrega_hito .fecha{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.fecha input{
+  border: 2px solid #00b13c;
+  border-radius: 20px;
+  padding: 5px 7px;
+}
+.estado_hito .opcion,
+.valoracion_hito .opcion{
+  text-align: center;
+  width: 100%;
+}
+.estado select, .valoracion select{
+  padding: 5px 15px;
+  margin-bottom: 5px;
+}
+.descripcion_hito,
+.feedback{
+  text-align: center;
+}
+.descripcion_hito textarea,
+.feedback textarea{
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 2px solid #00b13c;
+  border-radius: 10px;
+}
+div.guardar_hito{
+  float: right;
+  margin-top: 20px;
+}
+.titulo{
+  text-align: center;
+}
+.nombre_proyecto div span{
+  float: none;
+}
+
+/** REGISTRO DE PROYECTOS **/
+
+.datos_creacion_proyecto{
+  width: 100%;
+  margin-top: 20px;
+}
+.nom_proyecto{
+  border-radius: 20px;
+  border: 2px solid #00b13c;
+  padding: 5px 7px;
+  width: 100%;
+}
+.codigo,
+.asignacion,
+.ingreso_nombre_proyecto{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.codigo select,
+.proyecto,
+.asignacion select{
+  width: 100%;
+}
+.crear_proyecto{
+  position: relative;
+  float: right;
+  margin-top: 10px;
+}
+.grupos_proyectos{
+  width: 100%;
+  margin-top: 80px;
+  float: none;
+}
+/** MEDIA QUERIS **/
+@media only screen and (min-width:768px){
+  .grupos_proyectos{
+    border-left: 2px solid #00b13c;
+    width: 60%;
+    float: right;
+    margin-top: 10px;
+  }
+}
+@media only screen and (min-width:768px){
+  .crear_proyecto{
+    position: relative;
+    float: right;
+  }
+}
+@media only screen and (min-width:768px){
+  .codigo,
+  .asignacion,
+  .ingreso_nombre_proyecto{
+    width: 70%;
+    float: right;
+  }
+}
+@media only screen and (min-width:768px){
+  .datos_creacion_proyecto{
+    width: 40%;
+    margin-top: 20px;
+    float: left;
+  }
+}
+@media only screen and (min-width:768px){
+  .nombre_proyecto,
+  .codigo_curso,
+  .asignacion_alumno{
+    margin-bottom: 15px;
+    margin-right: 20px;
+    border-top: 0;
+  }
+}
+@media only screen and (min-width:768px){
+  .nombre_proyecto div span{
+    float: left;
+  }
+}
+@media only screen and (min-width:768px){
+  .logo{
+    margin: 10px 0 0 10px;
+    width: 230px;
+    height: 130px;
+  }
+}
+
+@media only screen and (min-width:768px){
+  .ingreso_usuario{
+    text-align: center;
+    border: 5px solid #00b13c;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 550px;
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width:768px){
+  .usuario{
+    padding: 2px 10px ;
+    border: 2px solid #00b13c;
+    border-radius: 20px;
+    width: 50%;
+    font-size: 1.2em;
+    margin-bottom: 10px
+  }
+  .contraseña{
+   padding: 2px 10px ;
+   border: 2px solid #00b13c;
+   border-radius: 20px;
+   width: 50%;
+   font-size: 1.2em;
+   margin-bottom: 25px
+  }
+}
+
+@media only screen and (min-width:768px){
+  .recordar_usuario{
+    float: left;
+    margin-left: 80px;
+    margin-top: 6px;
+  }
+}
+
+@media only screen and (min-width:768px){
+  .ingresar{
+    margin-right: 20px;
+    float: right;
+  }
+}
+
+@media only screen and (min-width:768px){
+  .tooltip{
+    position: relative;
+    display: inline-block;
+    right: 45px;
+    bottom: 12px;
+  }
+}
+
 @media only screen and (min-width:768px){
   .tooltip .tooltiptext{
     visibility: hidden;
@@ -202,16 +418,7 @@ label{
     transition: opacity 0.3s;
   }
 }
-.tooltip .tooltiptext::after{
-  content: "";
-  position: absolute;
-  top: 100%;
-  right: 28px;
-  margin-left: -50px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
+
 @media only screen and (min-width:768px){
   .tooltip .tooltiptext::after{
     content: "";
@@ -224,19 +431,7 @@ label{
     border-color: #555 transparent transparent transparent;
   }
 }
-.tooltip:hover .tooltiptext{
-  visibility: visible;
-  opacity: 1;
-}
 
-/** NAVEGACION **/
-
-  nav{
-    display: none;
-  }
-  nav ul{
-    display: none;
-  }
 @media only screen and (min-width:768px){
   nav{
     width: 100%;
@@ -274,59 +469,19 @@ label{
     display: block;
   }
 }
-/** MENU MOVIL **/
-div.menu_movil{
-  max-height: 120px;
-  position: relative;
-}
-div.boton_menu{
-    width: 60px;
-    display: block;
-    float: right;
-    text-align: right;
-    margin-top: 12px;
-}
+
 @media only screen and (min-width:768px){
     div.boton_menu{
         display: none;
     }
 }
-div.boton_menu:hover{
-    cursor: pointer;
-}
-div.boton_menu span{
-    height: 8px;
-    margin-bottom: 6px;
-    background-color: #00b13c;
-    display: block;
-}
-div.elementos-menu-movil{
-  position: absolute;
-  display: inline-grid;
-  right: 0;
-  top: 100%;
-  visibility: hidden;
-  z-index: 1;
-}
+
 @media only screen and (min-width:768px){
   div.elementos-menu-movil{
     display: none;
   }
 }
-div.elementos-menu-movil a{
-  border-radius: 0;
-}
-/** LISTA DE CURSOS **/
 
-.lista_cursos{
-  display: none;
-}
-.table{
-  font-size: 12px;
-}
-table.table th{
-  text-align: center;
-}
 @media only screen and (min-width:768px){
   table.table th{
     text-align: left;
@@ -341,27 +496,27 @@ table.table th{
     margin: 10px auto 0 auto;
   }
 }
-.table th{
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.2em;
+
+@media only screen and (min-width:768px){
+  .nombre_proyecto, .fecha_entrega_hito{
+    margin-top: 0;
+    border-bottom: 0;
+    border-top: 0;
+  }
 }
 
-/** REGISTRO DE HITOS **/
-
-.formulario_hito{
-  display: none;
-}
 @media only screen and (min-width:768px){
   .formulario_hito_movile{
     display: none;
   }
+  .formulario_hito{
+    display: block;
+  }
   .nombres_participantes .titulo{
     position: relative;
     float: left;
-    width: 30%
-  }
-  .formulario_hito{
-    display: block;
+    width: 30%;
+    text-align: left;
   }
   .datos_proyecto{
     margin-top: 20px;
@@ -371,10 +526,11 @@ table.table th{
   }
   .nombre_proyecto .titulo{
     width: 30%;
+    text-align: left;
   }
   .nombre_proyecto div span{
-    width: 69%;
-    float: right;
+    width: 70%;
+    float: left;
   }
   .nombres_participantes,
   .seccion_curso,
@@ -385,10 +541,13 @@ table.table th{
     text-align: left;
     position: relative;
     margin-top: 15px;
+    border-top: 0;
+    border-bottom: 0;
   }
   .titulo{
     width: 30%;
     float: left;
+    text-align: left;
   }
   .nombres{
     float: right;
@@ -412,6 +571,9 @@ table.table th{
     position: relative;
     text-align: left;
   }
+  .fecha{
+    float: left;
+  }
   .fecha span, .fecha input{
       border: 2px solid #00b13c;
       border-radius: 20px;
@@ -419,6 +581,9 @@ table.table th{
   }
   .descripcion_hito, .feedback{
     margin-bottom: 20px;
+    text-align: left;
+    border-bottom: 0;
+    border-top: 0;
   }
   .descripcion_hito textarea, .feedback textarea{
     width: 80%;
@@ -434,45 +599,8 @@ table.table th{
     width: 50%;
     text-indent: 5px;
   }
-}
-
-/** REGISTRO DE PROYECTOS **/
-
-.datos_creacion_proyecto{
-  width: 40%;
-  margin-top: 20px;
-  float: left;
-}
-.nombre_proyecto,
-.codigo_curso,
-.asignacion_alumno{
-  margin-bottom: 15px;
-  margin-right: 20px;
-}
-.nom_proyecto{
-  border-radius: 20px;
-  border: 2px solid #00b13c;
-  padding: 5px 7px;
-  width: 100%;
-}
-.codigo,
-.asignacion,
-.ingreso_nombre_proyecto{
-  width: 70%;
-  float: right;
-}
-.codigo select,
-.proyecto,
-.asignacion select{
-  width: 100%;
-}
-.crear_proyecto{
-  position: relative;
-  float: right;
-  margin-right: 20px;
-}
-.grupos_proyectos{
-  border-left: 2px solid #00b13c;
-  width: 60%;
-  float: right;
+  .estado_hito .opcion,
+  .valoracion_hito .opcion{
+    width: 50%;
+  }
 }

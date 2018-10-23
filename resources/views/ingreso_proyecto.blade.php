@@ -59,8 +59,8 @@
 						</td>
 						<td>
 							<button class="button" type="submit">Editar</button>
-						</td>
-						<td>
+							<br>
+							<br>
 							<button class="button" type="submit">Eliminar</button>
 						</td>
 					</tr>
