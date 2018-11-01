@@ -26,7 +26,7 @@
           <a href="ingreso_proyecto" class="button">Crear Proyecto</a>
           <a href="#" class="button">Informes</a>
           <a href="#" class="button">Ayuda</a>
-          <a href="#" class="button">Cerrar sesión</a>
+          <a href="/logout" class="button">Cerrar sesión</a>
         </div>
       </div>
     <nav class="navegacion clearfix">
@@ -37,7 +37,7 @@
           <ul>
             <li><a href="#" class="button">Informes</a></li>
             <li><a href="#" class="button">Ayuda</a></li>
-            <li><a href="#" class="button">Cerrar sesión</a></li>
+            <li><a href="/logout" class="button">Cerrar sesión</a></li>
           </ul>
         </li>
       </ul>
