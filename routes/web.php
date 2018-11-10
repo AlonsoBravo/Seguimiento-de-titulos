@@ -27,9 +27,16 @@ Route::get('ingreso_proyecto', function(){
   return view('ingreso_proyecto');
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 Route::get('registro_hito', function(){
   return view('registro_hito');
 });
+=======
+
+Route::get('registro_hito', function(){
+   return view ('registro_hito'); 
+});
+>>>>>>> b12a5f7bd7fc11450be4035b038a9a386a5d30ee
 =======
 
 Route::get('registro_hito', function(){
