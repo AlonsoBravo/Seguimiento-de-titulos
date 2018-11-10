@@ -13,6 +13,15 @@
                       <th scope="col"></th>
 				    </tr>
 				  </thead>
+				  @foreach($cursos as $curso)
+				      <tr>
+				          <th>{{ $curso->CUR_ID }}</th>
+				          <th>{{ $curso->CUR_NOMBRE }}</th>
+				          <th>{{ $curso->CUR_SEMESTRE }}</th>
+				          <th>{{ $curso->CUR_ANO }}</th>
+				          <th></th>
+				      </tr>
+				  @endforeach;
 				  <tbody>
 
 				  </tbody>
