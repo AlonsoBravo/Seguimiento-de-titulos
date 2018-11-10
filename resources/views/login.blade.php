@@ -15,7 +15,7 @@
         <div class="ingreso_usuario  clearfix">
           <h2>ingreso de usuarios</h2>
           <div class="contenedor_usuario">
-            <input class="usuario" type="text" name="rut" placeholder="Ingrese rut usuario" maxlength="12" required>
+            <input class="usuario" type="text" id="rut" name="rut" placeholder="Ingrese rut usuario" maxlength="12" required>
             <br>
           </div>
           <div class="contenedor_contraseña">
@@ -28,13 +28,14 @@
           </div>
           <div class="guardar_usuario">
             <input class="recordar_usuario" type="checkbox" name="recordar_usuario"><label>Recuerdame en este equipo</label>
-            <button href="#" type="submit" class="button ingresar">Ingresar</button>
+            <button type="submit" class="button ingresar" onClick="formateaRut(getElementById('rut'));">Ingresar</button>
           </div>
         </div><!-- .ingreso_usuario -->
       </form><!-- .fomulario_ingreso_usuario -->
     </div><!-- .contenedor -->
 
   <script src="js/mostrarContraseña.js"> </script>
+  <script src="js/formateaRut.js"> </script>
 
   </body>
 </html>

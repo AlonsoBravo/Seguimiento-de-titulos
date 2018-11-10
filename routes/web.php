@@ -26,6 +26,11 @@ Route::get('/lista_proyecto', 'Auth\UsuarioController@index')->name('lista_proye
 Route::get('ingreso_proyecto', function(){
   return view('ingreso_proyecto');
 });
+
+Route::get('prueba',function(){return view ('prueba');})->name('prueba');
+Route::get('alumno',function(){return view ('alumno');})->name('alumno');
+
+/*
 <<<<<<< HEAD
 <<<<<<< HEAD
 Route::get('registro_hito', function(){
@@ -34,12 +39,13 @@ Route::get('registro_hito', function(){
 =======
 
 Route::get('registro_hito', function(){
-   return view ('registro_hito'); 
+   return view ('registro_hito');
 });
 >>>>>>> b12a5f7bd7fc11450be4035b038a9a386a5d30ee
 =======
 
 Route::get('registro_hito', function(){
-   return view ('registro_hito'); 
+   return view ('registro_hito');
 });
 >>>>>>> b12a5f7bd7fc11450be4035b038a9a386a5d30ee
+*/
