@@ -24,7 +24,7 @@ class UsuarioLoginController extends Controller{
     public function login(Request $request){
 
       $this->validate($request,[
-          'rut' => 'required|min:12',
+          'rut' => 'required',
           'password' => 'required'
       ]);
 

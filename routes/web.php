@@ -23,3 +23,7 @@ Route::get('/lista_curso', 'Auth\UsuarioController@index')->name('lista_curso');
 Route::get('ingreso_proyecto', function(){
   return view('ingreso_proyecto');
 });
+
+Route::get('registro_hito', function(){
+   return view ('registro_hito'); 
+});
