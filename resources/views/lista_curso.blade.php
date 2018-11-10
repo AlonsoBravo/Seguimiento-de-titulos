@@ -13,12 +13,12 @@
                       <th scope="col"></th>
 				    </tr>
 				  </thead>
-				  @foreach($cursos as $curso)
+				  @foreach($cursos as $cur)
 				      <tr>
-				          <th>{{ $curso->CUR_ID }}</th>
-				          <th>{{ $curso->CUR_NOMBRE }}</th>
-				          <th>{{ $curso->CUR_SEMESTRE }}</th>
-				          <th>{{ $curso->CUR_ANO }}</th>
+				          <th>{{ $cur->CUR_ID }}</th>
+				          <th>{{ $cur->CUR_NOMBRE }}</th>
+				          <th>{{ $cur->CUR_SEMESTRE }}</th>
+				          <th>{{ $cur->CUR_ANO }}</th>
 				          <th></th>
 				      </tr>
 				  @endforeach
@@ -36,16 +36,18 @@
 							</tr>
 						</thead>
 						<tbody>
+						    @foreach($cursos as $cur)
 							<tr>
 								<td>
-									<p>ID: </p>
-									<p>Curso: </p>
-									<p>Semestre: </p>
-									<p>Año: </p>
+									<p>ID: {{ $cur->CUR_ID }}</p>
+									<p>Curso: {{ $cur->CUR_NOMBRE }}</p>
+									<p>Semestre: {{ $cur->CUR_SEMESTRE }}</p>
+									<p>Año: {{ $cur->CUR_ANO }}</p>
 									<br>
 									<a href="#" class="button">Ver Curso</a>
 								</td>
 							</tr>
+							@endforeach
 						</tbody>
 					</table> <!--.table-->
 				</div> <!--.lista_cursos-->
