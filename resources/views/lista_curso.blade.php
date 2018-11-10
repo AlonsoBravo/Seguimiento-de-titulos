@@ -6,14 +6,22 @@
 			<table class="table">
 				  <thead>
 				    <tr>
-				      <th scope="col">Nombre Proyecto</th>
-				      <th scope="col">Nombre Curso</th>
+				      <th scope="col">ID</th>
+				      <th scope="col">Curso</th>
 				      <th scope="col">Semestre</th>
-				      <th scope="col">Seccion</th>
-				      <th scope="col">Estado de proyecto</th>
-							<th scope="col"></th>
+				      <th scope="col">Año</th>
+                      <th scope="col"></th>
 				    </tr>
 				  </thead>
+				  @foreach($cursos as $cur)
+				      <tr>
+				          <th>{{ $cur->CUR_ID }}</th>
+				          <th>{{ $cur->CUR_NOMBRE }}</th>
+				          <th>{{ $cur->CUR_SEMESTRE }}</th>
+				          <th>{{ $cur->CUR_ANO }}</th>
+				          <th></th>
+				      </tr>
+				  @endforeach
 				  <tbody>
 
 				  </tbody>
@@ -28,39 +36,18 @@
 							</tr>
 						</thead>
 						<tbody>
+						    @foreach($cursos as $cur)
 							<tr>
 								<td>
-									<p>Nombre de proyecto: </p>
-									<p>Nombre de curso: </p>
-									<p>Semestre: </p>
-									<p>Sección: </p>
-									<p>Estado proyecto: </p>
+									<p>ID: {{ $cur->CUR_ID }}</p>
+									<p>Curso: {{ $cur->CUR_NOMBRE }}</p>
+									<p>Semestre: {{ $cur->CUR_SEMESTRE }}</p>
+									<p>Año: {{ $cur->CUR_ANO }}</p>
 									<br>
-									<a href="#" class="button">Ver proyecto</a>
+									<a href="#" class="button">Ver Curso</a>
 								</td>
 							</tr>
-							<tr>
-								<td>
-									<p>Nombre de proyecto: </p>
-									<p>Nombre de curso: </p>
-									<p>Semestre: </p>
-									<p>Sección: </p>
-									<p>Estado proyecto: </p>
-									<br>
-									<a href="#" class="button">Ver proyecto</a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p>Nombre de proyecto: </p>
-									<p>Nombre de curso: </p>
-									<p>Semestre: </p>
-									<p>Sección: </p>
-									<p>Estado proyecto: </p>
-									<br>
-									<a href="#" class="button">Ver proyecto</a>
-								</td>
-							</tr>
+							@endforeach
 						</tbody>
 					</table> <!--.table-->
 				</div> <!--.lista_cursos-->

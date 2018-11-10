@@ -186,6 +186,7 @@ div.elementos-menu-movil a{
 }
 /** LISTA DE CURSOS **/
 
+.lista_proyectos,
 .lista_cursos{
   display: none;
 }
@@ -488,10 +489,12 @@ div.guardar_hito{
   }
 }
 @media only screen and (min-width:768px){
-  .lista_cursos_movile{
+  .lista_cursos_movile,
+  .lista_proyectos_movile{
     display: none;
   }
-  .lista_cursos{
+  .lista_cursos,
+  .lista_proyectos{
     display: block;
     margin: 10px auto 0 auto;
   }
