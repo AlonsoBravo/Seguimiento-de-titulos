@@ -21,7 +21,7 @@
 				          <th>{{ $curso->CUR_ANO }}</th>
 				          <th></th>
 				      </tr>
-				  @endforeach;
+				  @endforeach
 				  <tbody>
 
 				  </tbody>

@@ -10,10 +10,6 @@ class CursoController extends Controller
 {
     public function index(){
         $cursos = DB::table('cursos')->get();
-        //dd($cursos);
         return view ('lista_curso',compact('cursos'));
-    }
-    public function list(){
-        
     }
 }

@@ -12,11 +12,21 @@
 				      <th scope="col">Semestre</th>
 				      <th scope="col">Seccion</th>
 				      <th scope="col">Estado de proyecto</th>
-							<th scope="col"></th>
+				      <th scope="col"></th>
 				    </tr>
 				  </thead>
 				  <tbody>
-
+				  @foreach($proyectos as $proy)
+				      <tr>
+				          <th>{{ $proy->PRO_ID }}</th>
+				          <th>{{ $proy->PRO_NOMBRE }}</th>
+				          <th>{{ $proy->PRO_CUR_ID }}</th>
+				          <th>{{ $proy->PRO_SEMESTRE }}</th>
+				          <th>{{ $proy->PRO_SECCION }}</th>
+				          <th>{{ $proy->PRO_PRORCENTAJE_ACT }}</th>
+				          <th></th>
+				      </tr>
+				  @endforeach
 				  </tbody>
 				</table> <!--.table-->
 			</div> <!--.lista_cursos-->

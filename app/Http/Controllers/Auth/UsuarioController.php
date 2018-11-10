@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class UsuarioController extends Controller{
@@ -11,7 +12,8 @@ class UsuarioController extends Controller{
     }
 
     public function index(){
-        return view ('lista_proyecto');
+        $proyectos = DB::table('proyectos')->get();
+        return view ('lista_proyecto',compact('proyectos'));
     }
 
 }
