@@ -4,6 +4,7 @@
   	<head>
   		<meta charset="utf-8">
   		<title>Listados de Cursos</title>
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
   		<link rel="stylesheet" href="css/estilos.css">
   		<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
   	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -31,7 +32,8 @@
       </div>
     <nav class="navegacion clearfix">
       <ul>
-       <li><a href="lista_curso" class="button">Lista de proyectos</a></li>
+       <li><a href="lista_proyecto" class="button">Proyectos</a></li>
+       <li><a href="lista_curso" class="button">Cursos</a></li>
        <li><a href="ingreso_proyecto" class="button">Crear Proyecto</a></li>
        <li><a href="#" class="button">Menú</a>
           <ul>

@@ -11,7 +11,7 @@ class UsuarioController extends Controller{
     }
 
     public function index(){
-        return view ('lista_curso');
+        return view ('lista_proyecto');
     }
 
 }

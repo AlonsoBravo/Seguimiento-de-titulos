@@ -2,15 +2,17 @@
 
 @yield('header')
 
-		<div class="lista_cursos">
+		<div class="lista_proyectos">
 			<table class="table">
 				  <thead>
 				    <tr>
-				      <th scope="col">ID</th>
+                      <th scope="col">ID</th>
+				      <th scope="col">Nombre</th>
 				      <th scope="col">Curso</th>
 				      <th scope="col">Semestre</th>
-				      <th scope="col">Año</th>
-                      <th scope="col"></th>
+				      <th scope="col">Seccion</th>
+				      <th scope="col">Estado de proyecto</th>
+							<th scope="col"></th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -19,7 +21,7 @@
 				</table> <!--.table-->
 			</div> <!--.lista_cursos-->
 
-			<div class="lista_cursos_movile">
+			<div class="lista_proyectos_movile">
 				<table class="table">
 						<thead>
 							<tr>
@@ -29,12 +31,14 @@
 						<tbody>
 							<tr>
 								<td>
-									<p>ID: </p>
-									<p>Curso: </p>
+								    <p>ID: </p>
+									<p>Nombre de proyecto: </p>
+									<p>Nombre de curso: </p>
 									<p>Semestre: </p>
-									<p>Año: </p>
+									<p>Sección: </p>
+									<p>Estado proyecto: </p>
 									<br>
-									<a href="#" class="button">Ver Curso</a>
+									<a href="#" class="button">Ver proyecto</a>
 								</td>
 							</tr>
 						</tbody>

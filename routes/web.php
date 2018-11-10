@@ -18,7 +18,10 @@ Route::get('/', function () {
 Route::get('/', 'Auth\UsuarioLoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\UsuarioLoginController@login')->name('login');
 Route::get('/logout', 'Auth\UsuarioLoginController@logout')->name('logout');
-Route::get('/lista_curso', 'Auth\UsuarioController@index')->name('lista_curso');
+
+Route::get('/lista_curso', 'Cursos\CursoController@index')->name('lista_curso');
+
+Route::get('/lista_proyecto', 'Auth\UsuarioController@index')->name('lista_proyecto');
 
 Route::get('ingreso_proyecto', function(){
   return view('ingreso_proyecto');
