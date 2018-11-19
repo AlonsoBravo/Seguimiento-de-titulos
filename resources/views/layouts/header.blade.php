@@ -28,7 +28,13 @@
           <a href="ingreso_proyecto" class="button">Crear Proyecto</a>
           <a href="#" class="button">Informes</a>
           <a href="#" class="button">Ayuda</a>
-          <a href="/logout" class="button">Cerrar sesión</a>
+          <a href= "{{route ('logout')}}" class="button"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">Cerrar sesión
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
         </div>
       </div>
     <nav class="navegacion clearfix">
@@ -40,7 +46,13 @@
           <ul>
             <li><a href="#" class="button">Informes</a></li>
             <li><a href="#" class="button">Ayuda</a></li>
-            <li><a href="/logout" class="button">Cerrar sesión</a></li>
+            <li><a href= "{{route ('logout')}}" class="button"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">Cerrar sesión
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form>
           </ul>
         </li>
       </ul>

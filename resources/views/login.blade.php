@@ -10,7 +10,7 @@
   <body>
     <div class="contenedor">
       <img class="logo" src="img/logo.jpg" alt="logo">
-      <form class="fomulario_ingreso_usuario" action="/login" method="POST">
+      <form class="fomulario_ingreso_usuario" action="{{ route('login') }}" method="POST">
         {{ csrf_field() }}
         <div class="ingreso_usuario  clearfix">
           <h2>ingreso de usuarios</h2>

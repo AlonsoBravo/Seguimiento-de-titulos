@@ -10,16 +10,12 @@ use Route;
 
 class UsuarioLoginController extends Controller{
 
-    public function __construct(){
-        $this->middleware('guest:usuario',['except'=> ['logout']]);
+    public function showLoginForm(){
+      return view('login');
     }
 
     public function username(){
         return 'rut';
-    }
-
-    public function showLoginForm(){
-        return view('login');
     }
 
     public function login(Request $request){
@@ -29,11 +25,12 @@ class UsuarioLoginController extends Controller{
             'password' => 'required'
         ]);
 
-        $usuario = DB::table('usuarios')->where('USU_RUT', $request->rut)->value('USU_TIPO');
+        $tipoUsuario = DB::table('usuarios')->where('USU_RUT', $request->rut)->value('USU_TIPO');
 
-        switch ($usuario) {
+        switch ($tipoUsuario) {
             case 0:
                 if(Auth::guard('usuario')->attempt(['USU_RUT' => $request->rut, 'password'=> $request->password], $request->remember)){
+                    $sessionUsuario = session(['autenticado' => $tipoUsuario]);
                     return redirect()->intended(route('lista_curso'));
                 }
                 return redirect()->back()->withInput($request->only('rut','remember'));
@@ -41,6 +38,7 @@ class UsuarioLoginController extends Controller{
 
             case 1:
                 if(Auth::guard('usuario')->attempt(['USU_RUT' => $request->rut, 'password'=> $request->password], $request->remember)){
+                    $sessionUsuario = session(['autenticado' => $tipoUsuario]);
                     return redirect()->intended(route('prueba'));
                 }
                 return redirect()->back()->withInput($request->only('rut','remember'));
@@ -48,6 +46,7 @@ class UsuarioLoginController extends Controller{
 
             case 2:
                 if(Auth::guard('usuario')->attempt(['USU_RUT' => $request->rut, 'password'=> $request->password], $request->remember)){
+                    $sessionUsuario = session(['autenticado' => $tipoUsuario]);
                     return redirect()->intended(route('alumno'));
                 }
                 return redirect()->back()->withInput($request->only('rut','remember'));
@@ -59,8 +58,8 @@ class UsuarioLoginController extends Controller{
         }
     }
 
-    public function logout(){
-        Auth::guard('usuario')->logout();
+    public function logout(Request $request){
+        $request->session()->forget('autenticado');
         return redirect ('/');
     }
 }

@@ -11,24 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/', 'Auth\UsuarioLoginController@showLoginForm')->name('login');
+/*Route::get('/', 'Auth\UsuarioLoginController@showLoginForm')->name('/');*/
+Route::get('/', 'Auth\UsuarioLoginController@showLoginForm')->name('/');
 Route::post('/login', 'Auth\UsuarioLoginController@login')->name('login');
-Route::get('/logout', 'Auth\UsuarioLoginController@logout')->name('logout');
+Route::post('/logout', 'Auth\UsuarioLoginController@logout')->name('logout');
 
-Route::get('/lista_curso', 'Cursos\CursoController@index')->name('lista_curso');
-
-Route::get('/lista_proyecto', 'Auth\UsuarioController@index')->name('lista_proyecto');
-
-Route::get('ingreso_proyecto', function(){
-  return view('ingreso_proyecto');
+Route::group(['middleware' => ['rutasProfesorMiddleware']], function () {
+  Route::get('/lista_curso', 'Cursos\CursoController@index')->name('lista_curso');
+  Route::get('/lista_proyecto', 'Auth\UsuarioController@index')->name('lista_proyecto');
+  Route::get('ingreso_proyecto', function(){return view('ingreso_proyecto');});
 });
 
-Route::get('prueba',function(){return view ('prueba');})->name('prueba');
-Route::get('alumno',function(){return view ('alumno');})->name('alumno');
+Route::group(['middleware' => ['rutasAdministrativoMiddleware']], function(){
+  Route::get('prueba',function(){return view ('prueba');})->name('prueba');
+});
+
+Route::group(['middleware' =>['rutasAlumnoMiddleware']], function(){
+  Route::get('alumno',function(){return view ('alumno');})->name('alumno');
+});  
 
 /*
 <<<<<<< HEAD

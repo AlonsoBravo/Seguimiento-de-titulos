@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 class CursoController extends Controller
 {
+
     public function index(){
         $cursos = Curso::all();
         return view ('lista_curso',compact('cursos'));
