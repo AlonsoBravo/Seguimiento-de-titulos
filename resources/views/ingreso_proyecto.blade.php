@@ -2,73 +2,69 @@
 
 @yield('header')
 
-<form class="formulario_creacion_proyecto" action="" method="post">
-	<div class="datos_creacion_proyecto">
-		<div class="nombre_proyecto clearfix">
-			<div class="titulo">
-				<span>Nombre proyecto: </span>
+<form class="nuevo_proyecto" action="" method="">
+	<div class="nombre_proyecto">
+		<label>Nombre de proyecto: </label>
+		<div class="ingreso_nombre_proyecto">
+			<input class="" type="text" required>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="cod_curso">
+		<label class="">Código de curso: </label>
+		<div class="ingreso_codigo_curso">
+			<select class="opcion" required>
+				<option value="">Escoja código de curso</option>
+				@foreach($codigoCursos as $codigoCurso)
+				<option value=""> {{ $codigoCurso -> CUR_ID }}</option>
+				@endforeach
+			</select>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="semestre_curso">
+		<label>Semestre: </label>
+		<div class="ingreso_semestre_curso">
+			<select class="opcion" required>
+				<option value="">Escoja semestre</option>
+				<option value="7">7mo semestre</option>
+				<option value="8">8vo semestre</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="descripcion_proyecto">
+		<label>Descripcion: </label>
+		<div class="ingreso_descripcion_proyecto">
+			<textarea class="form-control" required></textarea>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div class="clearfix" id='integrantes'>
+		<div class="agregar_integrante_tooltip" style="float:left; width:20%;">
+			<span class="agregar_integrante_tooltiptext">Agregar alumno</span>
+			<label>Integrantes: 	<i class="fas fa-plus-square agregar_integrante" id="agregar_integrante"></i></label>
+		</div>
+		<div id="asignar_alumno" style="float:right; width:75%;">
+			<div class="eliminar_integrante_tooltip">
+				<span class="eliminar_integrante_tooltiptext">Eliminar alumno</span>
+				<label for="asignar_alumno"><i class="fas fa-minus-square eliminar_integrante"></i></label>
 			</div>
-			<div class="ingreso_nombre_proyecto">
-				<input type="text" class="nom_proyecto" placeholder="Ingrese nombre proyecto">
-			</div>
-		</div><!-- .nombre_proyecto -->
-		<div class="codigo_curso clearfix">
-			<div class="titulo">
-				<span>Codigo de curso: </span>
-			</div>
-			<div class="codigo">
-				<select class="opcion">
-					<option value="">"codigo curso"</option>
-				</select>
-			</div>
-		</div><!-- .codigo_curso -->
-			<div class="asignacion_alumno clearfix">
-				<div class="titulo">
-					<span>Asignar alumno: </span>
-				</div>
-				<div class="asignacion">
-					<select class="opcion">
-						<option value="">"Alumno"</option>
-					</select>
-				</div>
-			</div>
-			<div class="crear_proyecto">
-				<button type="submit" class="button" name="button">Crear proyecto</button>
-			</div>
-	</div><!-- .datos_creacion_proyecto -->
-</form><!-- .formulario_creacion_proyecto -->
-
-<form class="editar_eliminar_proyecto" action="" method="post">
-	<div class="grupos_proyectos clearfix">
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Nombre proyecto</th>
-					<th>Codigo curso</th>
-					<th>Integrantes</th>
-				</tr>
-				<tbody>
-					<tr>
-						<td>"Nombre proyecto"</td>
-						<td>"Codigo curso"</td>
-						<td>
-							<p>"Intregante 1"</p>
-							<p>"Intregante 2"</p>
-							<p>"Intregante 3"</p>
-							<p>"Intregante 4"</p>
-						</td>
-						<td>
-							<button class="button" type="submit">Editar</button>
-							<br>
-							<br>
-							<button class="button" type="submit">Eliminar</button>
-						</td>
-					</tr>
-				</tbody>
-			</thead>
-		</table>
-	</div><!-- .grupos_proyectos -->
-</form><!-- .editar_eliminar_proyecto -->
+			<select class="opcion asignar_alumno" required style="top:-8px; position:relative;">
+				<option value="">Escoja alumno</option>
+				@foreach ($alumnos as $alumno)
+				<option value="{{$alumno -> USU_ID}}">{{ $alumno->USU_NOMBRE." ".$alumno->USU_APATERNO." ".$alumno->USU_AMATERNO}}</option>
+				@endforeach
+			</select>
+		</div>
+	</div>
+	<button class="button" type="submit" style="float: right">Guardar proyecto</button>
+</form><!-- .proyecto -->
 
 @include('layouts.footer')
 

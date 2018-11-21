@@ -261,78 +261,115 @@ div.guardar_hito{
 }
 
 /** REGISTRO DE PROYECTOS **/
-
-.datos_creacion_proyecto{
-  width: 100%;
-  margin-top: 20px;
-}
-.nom_proyecto{
-  border-radius: 20px;
-  border: 2px solid #00b13c;
-  padding: 5px 7px;
-  width: 100%;
-}
-.codigo,
-.asignacion,
-.ingreso_nombre_proyecto{
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-.codigo select,
-.proyecto,
-.asignacion select{
-  width: 100%;
-}
-.crear_proyecto{
-  position: relative;
-  float: right;
-  margin-top: 10px;
-}
-.grupos_proyectos{
-  width: 100%;
-  margin-top: 80px;
-  float: none;
-}
-/** MEDIA QUERIS **/
-@media only screen and (min-width:768px){
-  .grupos_proyectos{
-    border-left: 2px solid #00b13c;
-    width: 60%;
-    float: right;
-    margin-top: 10px;
-  }
-}
-@media only screen and (min-width:768px){
-  .crear_proyecto{
+.agregar_integrante_tooltip,
+.eliminar_integrante_tooltip{
     position: relative;
-    float: right;
-  }
+    display: inline-block;
 }
-@media only screen and (min-width:768px){
-  .codigo,
-  .asignacion,
-  .ingreso_nombre_proyecto{
-    width: 70%;
-    float: right;
-  }
+.agregar_integrante_tooltip .agregar_integrante_tooltiptext{
+    visibility: hidden;
+    width: 120px;
+    background-color: #21B24B;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: -2px;
+    left: 120px;
 }
-@media only screen and (min-width:768px){
-  .datos_creacion_proyecto{
-    width: 40%;
-    margin-top: 20px;
+.eliminar_integrante_tooltip .eliminar_integrante_tooltiptext{
+  visibility: hidden;
+  width: 120px;
+  background-color: #21B24B;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: -2px;
+  left: 28px;
+}
+.agregar_integrante_tooltip .agregar_integrante_tooltiptext::after,
+.eliminar_integrante_tooltip .eliminar_integrante_tooltiptext::after{
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #21B24B transparent transparent;
+}
+.agregar_integrante_tooltip:hover .agregar_integrante_tooltiptext,
+.eliminar_integrante_tooltip:hover .eliminar_integrante_tooltiptext{
+  visibility: visible;
+}
+.agregar_integrante{
+  font-size: 20px;
+  margin-left: 5px;
+  top: 4px;
+  position: relative;
+}
+
+.eliminar_integrante{
+  font-size: 20px;
+  margin-right: 7px;
+  position: relative;
+  top: 4px;
+}
+.agregar_integrante:hover,
+.eliminar_integrante{
+  cursor: pointer;
+}
+.nombre_proyecto label,
+.cod_curso label,
+.semestre_curso label,
+.descripcion_proyecto label{
+  width: 18%;
+}
+.ingreso_nombre_proyecto{
+  position: relative;
+  float: left;
+  width: 60%;
+}
+.ingreso_nombre_proyecto input{
+  border-radius: 4px;
+  border: 2px solid #00b13c;
+  width: 100%;
+}
+.ingreso_codigo_curso{
+    position: relative;
     float: left;
-  }
+    width: 60%;
 }
-@media only screen and (min-width:768px){
-  .nombre_proyecto,
-  .codigo_curso,
-  .asignacion_alumno{
-    margin-bottom: 15px;
-    margin-right: 20px;
-    border-top: 0;
-  }
+.ingreso_codigo_curso select{
+  width: 100%;
 }
+.ingreso_semestre_curso{
+  position: relative;
+  float: left;
+  width: 60%;
+}
+.ingreso_semestre_curso select{
+  width: 100%;
+}
+.ingreso_descripcion_proyecto{
+  position: relative;
+  float: left;
+  width: 60%;
+  margin-bottom: 30px;
+}
+.ingreso_descripcion_proyecto textarea{
+  border-radius: 4px;
+  border: 2px solid #00b13c;
+  width: 100%;
+}
+
+/** MEDIA QUERIS **/
+
 @media only screen and (min-width:768px){
   .nombre_proyecto div span{
     float: left;
