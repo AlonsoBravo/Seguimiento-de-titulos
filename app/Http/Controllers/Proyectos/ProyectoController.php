@@ -14,7 +14,7 @@ class ProyectoController extends Controller
       $codigoCursos = Curso::all();
       $alumnos = Usuarios::where('USU_TIPO',2)
                           ->where('USU_ESTADO','Activo')
-                          ->orderBy('USU_NOMBRE','asc')
+                          ->orderBy('USU_APATERNO','asc', 'USU_AMATERNO', 'asc', 'USU_NOMBRE','asc')
                           ->get();
       return view ('ingreso_proyecto',compact('codigoCursos','alumnos'));
     }

@@ -58,7 +58,7 @@
 			<select class="opcion asignar_alumno" required style="top:-8px; position:relative;">
 				<option value="">Escoja alumno</option>
 				@foreach ($alumnos as $alumno)
-				<option value="{{$alumno -> USU_ID}}">{{ $alumno->USU_NOMBRE." ".$alumno->USU_APATERNO." ".$alumno->USU_AMATERNO}}</option>
+				<option value="{{$alumno -> USU_ID}}">{{ $alumno->USU_APATERNO." ".$alumno->USU_AMATERNO." ".$alumno->USU_NOMBRE }}</option>
 				@endforeach
 			</select>
 		</div>
