@@ -20,6 +20,7 @@ Route::group(['middleware' => ['rutasProfesorMiddleware']], function () {
   Route::get('/lista_curso', 'Cursos\CursoController@index')->name('lista_curso');
   Route::get('/lista_proyecto', 'Auth\UsuarioController@index')->name('lista_proyecto');
   Route::get('ingreso_proyecto', 'Proyectos\ProyectoController@index')->name('ingreso_proyecto');
+  Route::post('guardar_proyecto','Proyectos\ProyectoController@guardarProyecto')->name('guardar_proyecto');
 });
 
 Route::group(['middleware' => ['rutasAdministrativoMiddleware']], function(){

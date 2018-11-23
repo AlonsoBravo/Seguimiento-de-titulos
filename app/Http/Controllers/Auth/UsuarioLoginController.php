@@ -30,7 +30,8 @@ class UsuarioLoginController extends Controller{
         switch ($tipoUsuario) {
             case 0:
                 if(Auth::guard('usuario')->attempt(['USU_RUT' => $request->rut, 'password'=> $request->password], $request->remember)){
-                    $sessionUsuario = session(['autenticado' => $tipoUsuario]);
+                    $idProfesor = DB::table('usuarios')->where('USU_RUT', $request->rut)->value('USU_ID');
+                    $sessionUsuario = session(['autenticado' => $tipoUsuario, 'idProfesor' => $idProfesor]);
                     return redirect()->intended(route('lista_curso'));
                 }
                 return redirect()->back()->withInput($request->only('rut','remember'));
@@ -59,7 +60,7 @@ class UsuarioLoginController extends Controller{
     }
 
     public function logout(Request $request){
-        $request->session()->forget('autenticado');
+        $request->session()->flush();
         return redirect ('/');
     }
 }

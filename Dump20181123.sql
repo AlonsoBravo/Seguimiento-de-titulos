@@ -1,15 +1,15 @@
 CREATE DATABASE  IF NOT EXISTS `seguimiento_titulos` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `seguimiento_titulos`;
--- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: seguimiento_titulos
 -- ------------------------------------------------------
--- Server version	8.0.12
+-- Server version	5.7.20-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,7 +23,7 @@ USE `seguimiento_titulos`;
 
 DROP TABLE IF EXISTS `cursos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cursos` (
   `CUR_ID` int(11) NOT NULL COMMENT 'Codigo del Curso',
   `CUR_NOMBRE` varchar(80) DEFAULT NULL COMMENT 'Nombre del Curso ',
@@ -50,7 +50,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `detalle_cursos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `detalle_cursos` (
   `DET_CUR_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `CUR_ID` int(11) NOT NULL,
@@ -75,17 +75,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `detalle_proyectos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `detalle_proyectos` (
-  `DET_PRO_ID` int(11) NOT NULL,
+  `DET_PRO_ID` int(11) NOT NULL AUTO_INCREMENT,
   `DET_ALU_ID` int(11) NOT NULL,
   `PRO_ID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`DET_PRO_ID`,`DET_ALU_ID`),
+  PRIMARY KEY (`DET_PRO_ID`),
   KEY `fk_PROYECTOS_has_ALUMNOS_ALUMNOS1_idx` (`DET_ALU_ID`),
-  KEY `fk_PROYECTOS_has_ALUMNOS_PROYECTOS1_idx` (`DET_PRO_ID`),
-  CONSTRAINT `fk_PROYECTOS_has_ALUMNOS_ALUMNOS1` FOREIGN KEY (`DET_ALU_ID`) REFERENCES `usuarios` (`usu_id`),
-  CONSTRAINT `fk_PROYECTOS_has_ALUMNOS_PROYECTOS1` FOREIGN KEY (`DET_PRO_ID`) REFERENCES `proyectos` (`pro_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_PROYECTOS_has_ALUMNOS_PROYECTOS1_idx` (`DET_PRO_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +101,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `hitos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hitos` (
   `HIT_ID` int(11) NOT NULL,
   `HIT_PRO_ID` int(11) DEFAULT NULL,
@@ -112,9 +110,7 @@ CREATE TABLE `hitos` (
   `HIT_VALORIZACION` decimal(3,0) DEFAULT NULL,
   `HIT_PROCENTAJE` decimal(3,2) DEFAULT NULL,
   `HIT_FEEDBACK` text,
-  PRIMARY KEY (`HIT_ID`),
-  KEY `HIT_PRO_ID_idx` (`HIT_PRO_ID`),
-  CONSTRAINT `HIT_PRO_ID` FOREIGN KEY (`HIT_PRO_ID`) REFERENCES `proyectos` (`pro_id`)
+  PRIMARY KEY (`HIT_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -133,7 +129,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -158,7 +154,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `proyectos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `proyectos` (
   `PRO_ID` int(11) NOT NULL COMMENT 'ID correlativo de proyectos',
   `PRO_CUR_ID` int(11) DEFAULT NULL,
@@ -167,14 +163,9 @@ CREATE TABLE `proyectos` (
   `PRO_DESCRIPCION` text,
   `PRO_FECHA_INICIO` date DEFAULT NULL,
   `PRO_SEMESTRE` varchar(2) DEFAULT NULL,
-  `PRO_SECCIÓN` varchar(2) DEFAULT NULL,
-  `PRO_PRORCENTAJE_ACT` varchar(3) DEFAULT NULL,
+  `PRO_PORCENTAJE_ACT` varchar(3) DEFAULT NULL,
   `PRO_ESTADO` int(1) DEFAULT NULL COMMENT 'Estado del Proyecto\n0:Activo\n1:Inactivo',
-  PRIMARY KEY (`PRO_ID`),
-  KEY `Curso_idx` (`PRO_CUR_ID`),
-  KEY `Profesor_idx` (`PRO_USU_ID`),
-  CONSTRAINT `Curso` FOREIGN KEY (`PRO_CUR_ID`) REFERENCES `cursos` (`cur_id`),
-  CONSTRAINT `Profesor` FOREIGN KEY (`PRO_USU_ID`) REFERENCES `usuarios` (`usu_id`)
+  PRIMARY KEY (`PRO_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -193,7 +184,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
   `USU_ID` int(11) NOT NULL COMMENT 'ID del Usuario',
   `USU_RUT` varchar(12) DEFAULT NULL COMMENT 'Rut del Usuario \nFormato: 11.111.111-1\n',
@@ -228,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-21 20:25:24
+-- Dump completed on 2018-11-23 15:08:03

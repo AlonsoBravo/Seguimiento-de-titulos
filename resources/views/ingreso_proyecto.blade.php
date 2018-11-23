@@ -2,11 +2,22 @@
 
 @yield('header')
 
-<form class="nuevo_proyecto" action="" method="">
+@if (session('mensaje') == 'ok')
+	<div class="alert alert-success" role="alert">
+		¡Proyecto guardado!
+	</div>
+@elseif(session('mensaje')== 'error')
+	<div class="alert alert-danger" role="alert">
+		¡Alumno ya se encuentra asignado a proyecto!
+	</div>
+@endif
+
+<form class="nuevo_proyecto" action="{{route('guardar_proyecto')}}" method="POST">
+	{{ csrf_field() }}
 	<div class="nombre_proyecto">
 		<label>Nombre de proyecto: </label>
 		<div class="ingreso_nombre_proyecto">
-			<input class="" type="text" required>
+			<input class="" type="text" name="nombre_proyecto" required>
 		</div>
 	</div>
 	<br>
@@ -14,23 +25,11 @@
 	<div class="cod_curso">
 		<label class="">Código de curso: </label>
 		<div class="ingreso_codigo_curso">
-			<select class="opcion" required>
+			<select class="opcion" name="codigo_curso" id="codigo_curso" required>
 				<option value="">Escoja código de curso</option>
 				@foreach($codigoCursos as $codigoCurso)
-				<option value=""> {{ $codigoCurso -> CUR_ID }}</option>
+					<option value="{{ $codigoCurso -> CUR_ID }}"> {{ $codigoCurso -> CUR_ID }}</option>
 				@endforeach
-			</select>
-		</div>
-	</div>
-	<br>
-	<br>
-	<div class="semestre_curso">
-		<label>Semestre: </label>
-		<div class="ingreso_semestre_curso">
-			<select class="opcion" required>
-				<option value="">Escoja semestre</option>
-				<option value="7">7mo semestre</option>
-				<option value="8">8vo semestre</option>
 			</select>
 		</div>
 	</div>
@@ -39,7 +38,7 @@
 	<div class="descripcion_proyecto">
 		<label>Descripcion: </label>
 		<div class="ingreso_descripcion_proyecto">
-			<textarea class="form-control" required></textarea>
+			<textarea class="form-control" name="descripcion"required></textarea>
 		</div>
 	</div>
 	<br>
@@ -55,15 +54,15 @@
 				<span class="eliminar_integrante_tooltiptext">Eliminar alumno</span>
 				<label for="asignar_alumno"><i class="fas fa-minus-square eliminar_integrante"></i></label>
 			</div>
-			<select class="opcion asignar_alumno" required style="top:-8px; position:relative;">
+			<select class="opcion asignar_alumno" name="alumno[]" required style="top:-8px; position:relative;">
 				<option value="">Escoja alumno</option>
 				@foreach ($alumnos as $alumno)
-				<option value="{{$alumno -> USU_ID}}">{{ $alumno->USU_APATERNO." ".$alumno->USU_AMATERNO." ".$alumno->USU_NOMBRE }}</option>
+					<option value="{{$alumno -> USU_ID}}">{{ $alumno->USU_APATERNO." ".$alumno->USU_AMATERNO." ".$alumno->USU_NOMBRE }}</option>
 				@endforeach
 			</select>
 		</div>
 	</div>
-	<button class="button" type="submit" style="float: right">Guardar proyecto</button>
+	<button type="submit"class="button" style="float:right;">Guardar proyecto</button>
 </form><!-- .proyecto -->
 
 @include('layouts.footer')

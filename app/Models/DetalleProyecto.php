@@ -9,6 +9,6 @@ class DetalleProyecto extends Model
   protected $table = 'detalle_proyectos';
 
   protected $fillable = [
-    'DET_PRO_ID', 'DET_ALU_ID'
+    'DET_PRO_ID', 'DET_ALU_ID', 'PRO_ID',
     ];
 }

@@ -10,7 +10,6 @@
 				      <th scope="col">Nombre</th>
 				      <th scope="col">Curso</th>
 				      <th scope="col">Semestre</th>
-				      <th scope="col">Seccion</th>
 				      <th scope="col">Estado de proyecto</th>
 				      <th scope="col"></th>
 				    </tr>
@@ -22,9 +21,8 @@
 				          <th>{{ $proy->PRO_NOMBRE }}</th>
 				          <th>{{ $proy->PRO_CUR_ID }}</th>
 				          <th>{{ $proy->PRO_SEMESTRE }}</th>
-				          <th>{{ $proy->PRO_SECCION }}</th>
-				          <th>{{ $proy->PRO_PRORCENTAJE_ACT }}</th>
-				          <th></th>
+				          <th>{{ $proy->PRO_PORCENTAJE_ACT . '%' }}</th>
+				          <th><a href="" class="button">registrar hito</a></th>
 				      </tr>
 				  @endforeach
 				  </tbody>
