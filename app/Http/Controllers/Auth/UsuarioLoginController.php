@@ -34,7 +34,7 @@ class UsuarioLoginController extends Controller{
                     $sessionUsuario = session(['autenticado' => $tipoUsuario, 'idProfesor' => $idProfesor]);
                     return redirect()->intended(route('lista_curso'));
                 }
-                return redirect()->back()->withInput($request->only('rut','remember'));
+                return redirect('/')->with('mensaje', 'error');
             break;
 
             case 1:

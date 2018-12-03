@@ -14,16 +14,13 @@ class ProyectoController extends Controller
 {
   public function index(Request $request){
     $codigoCursos = Curso::all();
-    $alumnos = Usuarios::join('detalle_cursos', 'usuarios.USU_ID','=','detalle_cursos.USU_ID')
-    ->select('usuarios.*')
-    ->where('detalle_cursos.CUR_ID', $request->codigo_curso)
-    ->get();
-    /*$alumnos = Usuarios::where('USU_TIPO',2)
+
+    $alumnos = Usuarios::where('USU_TIPO',2)
     ->where('USU_ESTADO','Activo')
     ->orderBy('USU_APATERNO','asc')
     ->orderby('USU_AMATERNO', 'asc')
     ->orderBy('USU_NOMBRE', 'asc')
-    ->get();*/
+    ->get();
     return view ('ingreso_proyecto',compact('codigoCursos','alumnos'));
   }
 
@@ -42,29 +39,32 @@ class ProyectoController extends Controller
 
       //se valida que el alumno asignado no se encuentre en otro proyecto
       $verificaAsignacionAlumno = DB::table('detalle_proyectos')
-      ->where('DET_ALU_ID', $alumnosAsignado)->value('DET_ALU_ID');
+                                  ->where('DET_ALU_ID', $alumnosAsignado)
+                                  ->value('DET_ALU_ID');
 
-      if($verificaAsignacionAlumno != $alumnosAsignado){
+      if($verificaAsignacionAlumno == $alumnosAsignado){
+        $alumno = Usuarios::where('USU_ID', $alumnosAsignado)
+                  ->get();
 
-        DB::table('proyectos')->insert(
-          ['PRO_ID' => $idProyecto,
-          'PRO_CUR_ID'=> $request->codigo_curso,
-          'PRO_USU_ID'=>$request->session()->get('idProfesor'),
-          'PRO_NOMBRE'=> $request->nombre_proyecto,
-          'PRO_DESCRIPCION'=>$request->descripcion,
-          'PRO_FECHA_INICIO'=>$fecha,
-          'PRO_SEMESTRE' => 'I',
-          'PRO_PORCENTAJE_ACT' => 0,
-          'PRO_ESTADO' => 1,]
-        );
-
-        DB::table('detalle_proyectos')->insert(
-          ['DET_ALU_ID' => $alumnosAsignado,
-          'PRO_ID'=> $idProyecto]
-        );
-      }else {
-        return redirect('ingreso_proyecto')->with('mensaje','error');
+        return view('ingreso_proyecto', compact('alumno'));
       }
+    }
+    DB::table('proyectos')->insert(
+      ['PRO_ID' => $idProyecto,
+      'PRO_CUR_ID'=> $request->codigo_curso,
+      'PRO_USU_ID'=>$request->session()->get('idProfesor'),
+      'PRO_NOMBRE'=> $request->nombre_proyecto,
+      'PRO_DESCRIPCION'=>$request->descripcion,
+      'PRO_FECHA_INICIO'=>$fecha,
+      'PRO_SEMESTRE' => 'I',
+      'PRO_PORCENTAJE_ACT' => 0,
+      'PRO_ESTADO' => 1,]
+    );
+    foreach ($alumnosAsignados as $alumnosAsignado){
+      DB::table('detalle_proyectos')->insert(
+        ['DET_ALU_ID' => $alumnosAsignado,
+        'PRO_ID'=> $idProyecto]
+      );
     }
     return redirect('ingreso_proyecto')->with('mensaje','ok');
   }

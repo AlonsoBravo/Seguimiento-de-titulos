@@ -6,8 +6,9 @@
 	<div class="alert alert-success" role="alert">
 		¡Proyecto guardado!
 	</div>
-@elseif(session('mensaje')== 'error')
+@elseif(!empty($alumno))
 	<div class="alert alert-danger" role="alert">
+		{{ $alumno->USU_APATERNO.' '.$alumno->USU_AMATERNO.' '.$alumno->USU_NOMBRE}}
 		¡Alumno ya se encuentra asignado a proyecto!
 	</div>
 @endif
