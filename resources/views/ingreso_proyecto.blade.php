@@ -2,17 +2,24 @@
 
 @yield('header')
 
-@if (session('mensaje') == 'ok')
-	<div class="alert alert-success" role="alert">
-		¡Proyecto guardado!
+@if(session('mensaje') == 'ok')
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<strong>¡Proyecto guardado con éxito!</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
 	</div>
-@elseif(!empty($alumno))
-	<div class="alert alert-danger" role="alert">
-		{{ $alumno->USU_APATERNO.' '.$alumno->USU_AMATERNO.' '.$alumno->USU_NOMBRE}}
-		¡Alumno ya se encuentra asignado a proyecto!
+@elseif(session('mensaje') == 'error')
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<strong>¡Error al guardar proyecto!</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
 	</div>
 @endif
+<div class="error">
 
+</div>
 <form class="nuevo_proyecto" action="{{route('guardar_proyecto')}}" method="POST">
 	{{ csrf_field() }}
 	<div class="nombre_proyecto">
@@ -24,12 +31,12 @@
 	<br>
 	<br>
 	<div class="cod_curso">
-		<label class="">Código de curso: </label>
+		<label class="">Sección de curso: </label>
 		<div class="ingreso_codigo_curso">
-			<select class="opcion" name="codigo_curso" id="codigo_curso" required>
-				<option value="">Escoja código de curso</option>
-				@foreach($codigoCursos as $codigoCurso)
-					<option value="{{ $codigoCurso -> CUR_ID }}"> {{ $codigoCurso -> CUR_ID }}</option>
+			<select class="opcion seccion" name="seccion_curso" id="codigo_curso" required>
+				<option value="">Escoja sección de curso</option>
+				@foreach($seccionCursos as $seccionCurso)
+					<option value="{{ $seccionCurso -> CUR_SECCION }}"> {{ $seccionCurso -> CUR_SECCION }}</option>
 				@endforeach
 			</select>
 		</div>
@@ -39,7 +46,7 @@
 	<div class="descripcion_proyecto">
 		<label>Descripcion: </label>
 		<div class="ingreso_descripcion_proyecto">
-			<textarea class="form-control" name="descripcion"required></textarea>
+			<textarea class="form-control" name="descripcion" required></textarea>
 		</div>
 	</div>
 	<br>
@@ -57,14 +64,40 @@
 			</div>
 			<select class="opcion asignar_alumno" name="alumno[]" required style="top:-8px; position:relative;">
 				<option value="">Escoja alumno</option>
-				@foreach ($alumnos as $alumno)
-					<option value="{{$alumno -> USU_ID}}">{{ $alumno->USU_APATERNO." ".$alumno->USU_AMATERNO." ".$alumno->USU_NOMBRE }}</option>
-				@endforeach
 			</select>
 		</div>
 	</div>
-	<button type="submit"class="button" style="float:right;">Guardar proyecto</button>
+	<button type="submit" class="button" style="float:right;">Guardar proyecto</button>
 </form><!-- .proyecto -->
+
+
+<script type="text/javascript">
+
+			$(document).on('change','select.asignar_alumno',function(){
+				$idAlumno = $(this).val();
+				$.ajax({
+					type:'get',
+					url:'{{URL::to('buscar_alumno_asignado')}}',
+					data:{$idAlumno},
+					success:function(data){
+						$('.error').html(data);
+					}
+				});
+			});
+
+			$(document).on('change', 'select.seccion',function(){
+				$seccion = $(this).val();
+				$.ajax({
+					type:'get',
+					url:'{{URL::to('buscar_seccion_alumno')}}',
+					data:{$seccion},
+					success:function(data){
+						alert(data);
+					}
+				});
+			});
+
+</script>
 
 @include('layouts.footer')
 
