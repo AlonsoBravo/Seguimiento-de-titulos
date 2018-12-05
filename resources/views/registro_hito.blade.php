@@ -23,10 +23,6 @@
                <div class="titulo"><span>Seccion curso:</span></div>
                <div class="nombre_seccion"><span>Seccion {{ $pro->PRO_SECCION }}</span></div>
            </div><!-- .seccion_curso -->
-           <div class="fecha_ultimo_hito clearfix">
-               <div class="titulo"><span>Fecha último hito:</span></div>
-               <div class="fecha"><span>"dd-mm-yyyy"</span></div>
-           </div><!-- fecha_ultimo_hito -->
            <div class="fecha_entrega_hito clearfix">
                <div class="titulo"><span>Fecha entrega hito:</span></div>
                <div class="fecha"><input type="date"></div>
