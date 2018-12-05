@@ -14,6 +14,7 @@ class Hito extends Model
     'HIT_FECHA_ENTREGA',
     'HIT_ESTADO',
     'HIT_PORCENTAJE',
+    'HIT_COMENTARIO',
     'HIT_FEEDBACK',
     'HIT_SEMANA_ENTREGA',
     ];
