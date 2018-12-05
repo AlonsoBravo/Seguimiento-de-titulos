@@ -92,7 +92,7 @@ class ProyectoController extends Controller
     }
 
     $idProyecto = DB::table('proyectos')->max('PRO_ID');
-    
+
     $fecha = new \DateTime();
 
     DB::table('proyectos')->insert(
@@ -118,7 +118,7 @@ class ProyectoController extends Controller
 
     for ($i=1; $i<19 ; $i++) {
       DB::table('hitos')->insert([
-        'HIT_PRO_ID' => $idProyecto,
+        'HIT_PRO_ID' => $idProyecto+1,
         'HIT_SEMANA_ENTREGA'=> $i,
       ]);
     }
