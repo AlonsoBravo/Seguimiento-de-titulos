@@ -60,9 +60,9 @@
 		<div id="asignar_alumno" style="float:right; width:75%;">
 			<div class="eliminar_integrante_tooltip">
 				<span class="eliminar_integrante_tooltiptext">Eliminar alumno</span>
-				<label for="asignar_alumno"><i class="fas fa-minus-square eliminar_integrante"></i></label>
+				<label for="asignar_alumno"><i class="fas fa-minus-square eliminar_integrante" id="eliminar_integrante"></i></label>
 			</div>
-			<select class="opcion asignar_alumno" name="alumno[]" required style="top:-8px; position:relative;">
+			<select class="opcion asignar_alumno" id="alumnos" name="alumno[]" required style="top:-8px; position:relative;">
 				<option value="">Escoja alumno</option>
 			</select>
 		</div>
