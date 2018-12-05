@@ -64,7 +64,7 @@ class ProyectoController extends Controller
                     ->where('detalle_cursos.CUR_SECCION',$seccionCurso)
                     ->where('detalle_cursos.CUR_ID','TP401')
                     ->get();
-                    
+
       return Response ($alumnos);
     }
   }
@@ -78,25 +78,20 @@ class ProyectoController extends Controller
 
       //se valida que el alumno asignado no se encuentre en otro proyecto
       $verificaAsignacionAlumno = DB::table('detalle_proyectos')
-                                  ->where('DET_ALU_ID', $alumnoAsignado)
+                                  ->where('DET_ALU_ID', $alumnosAsignado)
                                   ->value('DET_ALU_ID');
 
+      if($verificaAsignacionAlumno == $alumnosAsignado){
+        $alumno = Usuarios::where('USU_ID', $alumnosAsignado)
+                  ->get();
 
-      if($verificaAsignacionAlumno == $alumnoAsignado){
-
-        return redirect('ingreso_proyecto')->with('mensaje','error');
+        return view('ingreso_proyecto', compact('alumno'));
       }
     }
-    //se obtiene la fecha actual del sistema en formato yy/mm/dd.
-    $fecha = new \DateTime();
-
-    //se busca el maximo id de la tabla proyectos para aumentarlo en 1
-    $idProyecto = DB::table('proyectos')->max('PRO_ID') + 1;
-
     DB::table('proyectos')->insert(
       ['PRO_ID' => $idProyecto,
-      'PRO_CUR_ID'=> $request->seccion_curso,
-      'PRO_PROF_ID'=>$request->session()->get('idProfesor'),
+      'PRO_CUR_ID'=> $request->codigo_curso,
+      'PRO_USU_ID'=>$request->session()->get('idProfesor'),
       'PRO_NOMBRE'=> $request->nombre_proyecto,
       'PRO_DESCRIPCION'=>$request->descripcion,
       'PRO_FECHA_INICIO'=>$fecha,

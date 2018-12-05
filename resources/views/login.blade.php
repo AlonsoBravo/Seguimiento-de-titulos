@@ -10,6 +10,11 @@
   <body>
     <div class="contenedor">
       <img class="logo" src="img/logo.jpg" alt="logo">
+      @if(session('mensaje')=='error')
+      <div class="alert alert-danger" role="alert" style="margin-bottom:5px; text-align:center; background-color:#F8D7DA; padding: 20px 0;">
+        <strong style="font-size: 1.2em;">¡Usuario o contraseña erroneo!</strong>
+      </div>
+      @endif()
       <form class="fomulario_ingreso_usuario" action="{{ route('login') }}" method="POST">
         {{ csrf_field() }}
         <div class="ingreso_usuario  clearfix">
