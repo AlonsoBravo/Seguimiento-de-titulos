@@ -27,9 +27,9 @@
           <span></span>
         </div>
         <div id="elementos-menu-movil" class="elementos-menu-movil">
-          <a href="lista_proyecto" class="button">Proyectos</a>
-          <a href="lista_curso" class="button">Cursos</a>
-          <a href="ingreso_proyecto" class="button">Crear Proyecto</a>
+          <a href="/lista_proyecto" class="button">Proyectos</a>
+          <a href="/lista_curso" class="button">Cursos</a>
+          <a href="/ingreso_proyecto" class="button">Crear Proyecto</a>
           <a href="#" class="button">Informes</a>
           <a href="#" class="button">Ayuda</a>
           <a href= "{{route ('logout')}}" class="button"
@@ -43,9 +43,9 @@
       </div>
     <nav class="navegacion clearfix">
       <ul>
-       <li><a href="lista_proyecto" class="button">Proyectos</a></li>
-       <li><a href="lista_curso" class="button">Cursos</a></li>
-       <li><a href="ingreso_proyecto" class="button">Crear Proyecto</a></li>
+       <li><a href="/lista_proyecto" class="button">Proyectos</a></li>
+       <li><a href="/lista_curso" class="button">Cursos</a></li>
+       <li><a href="/ingreso_proyecto" class="button">Crear Proyecto</a></li>
        <li><a href="#" class="button">Menú</a>
           <ul>
             <li><a href="#" class="button">Informes</a></li>
