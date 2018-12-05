@@ -22,7 +22,7 @@
 				          <th>{{ $proy->PRO_CUR_ID }}</th>
 				          <th>{{ $proy->PRO_SEMESTRE }}</th>
 				          <th>{{ $proy->PRO_PORCENTAJE_ACT . '%' }}</th>
-				          <th><a href="" class="button">registrar hito</a></th>
+				          <th><a href="registro_hito/{{ $proy->PRO_ID }}" class="button">registrar hito</a></th>
 				      </tr>
 				  @endforeach
 				  </tbody>
