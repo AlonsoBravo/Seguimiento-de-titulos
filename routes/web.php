@@ -13,7 +13,7 @@ Route::group(['middleware' => ['rutasProfesorMiddleware']], function () {
 
     Route::get('registro_hito/{id}','Hitos\HitoController@CargaDatosProyecto');
     Route::get('lista_hitos/{id}','Hitos\HitoController@CargarHitos');
-    Route::post('guardar_hito','Hitos\HitoController@ActualizaHito')->name('guardar_hito');
+    Route::post('/guardar_hito','Hitos\HitoController@ActualizaHito')->name('guardar_hito');
 
 });
 

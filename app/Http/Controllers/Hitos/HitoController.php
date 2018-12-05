@@ -10,6 +10,7 @@ use App\Models\Usuarios;
 use App\Models\Proyecto;
 use App\Models\DetalleProyecto;
 use App\Models\Hito;
+use Response;
 
 class HitoController extends Controller
 {
@@ -45,13 +46,15 @@ class HitoController extends Controller
         $porc = $request->valoriza;
         $nota = (5.5*$porc)/100;
         
-        DB::table('hitos')->where('HIT_ID',$request->idhito)
-            ->update(array(
-                'HIT_FECHA_ENTREGA' => $request->fecha-entrega,
-                'HIT_ESTADO'        => $request->estado-hito,
+        DB::table('hitos')
+            ->where('HIT_ID','=',$request->idhito)
+            ->update([
+                'HIT_FECHA_ENTREGA' => $request->fechaentrega,
+                'HIT_ESTADO'        => $request->estadohito,
                 'HIT_PORCENTAJE'    => $request->valoriza,
                 'HIT_COMENTARIO'    => $request->detalle,
-                'HIT_FEEDBACK'      => $request->feedback));
+                'HIT_FEEDBACK'      => $request->feedback
+            ]);
         return redirect('ingreso_proyecto')->with('mensaje','ok');
     }
 }

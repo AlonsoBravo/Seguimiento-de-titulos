@@ -5,6 +5,7 @@
 @foreach($proyecto as $pro)
 
 <form class="formulario_hito" action="{{route('guardar_hito')}}" method="post">
+    {{ csrf_field() }}
     <div class="registro clearfix">
 	   <div class="datos_proyecto">
            <div class="nombre_proyecto clearfix">
@@ -25,12 +26,12 @@
            </div><!-- .seccion_curso -->
            <div class="fecha_entrega_hito clearfix">
                <div class="titulo"><span>Fecha entrega hito:</span></div>
-               <div class="fecha"><input type="date" name="fecha-entrega" id="fecha-entrega"></div>
+               <div class="fecha"><input type="date" name="fechaentrega" id="fechaentrega"></div>
            </div><!-- .fecha_entrega_hito -->
            <div class="estado_hito">
 				<div class="titulo"><span>Estado de hito: </span></div>
 				<div class="estado">
-                    <select class="opcion" name="estado-hito" id="estado-hito">
+                    <select class="opcion" name="estadohito" id="estadohito">
                         <option value="">Escoja un estado</option>
                         <option value="entregado">Entregado</option>
                         <option value="atrasado">Atrasado</option>
