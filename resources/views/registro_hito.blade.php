@@ -4,7 +4,7 @@
 
 @foreach($proyecto as $pro)
 
-<form class="formulario_hito" action="" method="post">
+<form class="formulario_hito" action="{{route('guardar_hito')}}" method="post">
     <div class="registro clearfix">
 	   <div class="datos_proyecto">
            <div class="nombre_proyecto clearfix">
@@ -25,12 +25,12 @@
            </div><!-- .seccion_curso -->
            <div class="fecha_entrega_hito clearfix">
                <div class="titulo"><span>Fecha entrega hito:</span></div>
-               <div class="fecha"><input type="date"></div>
+               <div class="fecha"><input type="date" name="fecha-entrega" id="fecha-entrega"></div>
            </div><!-- .fecha_entrega_hito -->
            <div class="estado_hito">
 				<div class="titulo"><span>Estado de hito: </span></div>
 				<div class="estado">
-                    <select class="opcion">
+                    <select class="opcion" name="estado-hito" id="estado-hito">
                         <option value="">Escoja un estado</option>
                         <option value="entregado">Entregado</option>
                         <option value="atrasado">Atrasado</option>
@@ -41,7 +41,7 @@
            <div class="valoracion_hito clearfix">
                <div class="titulo"><span>Valoración: </span></div>
                <div class="valoracion">
-                   <select class="opcion">
+                   <select class="opcion" name="valoriza" id="valoriza">
                        <option value="">Escoja un valor</option>
                        <option value="5">5%</option>
                        <option value="10">10%</option>
@@ -70,11 +70,15 @@
         <div class="registo_hito">
             <div class="descripcion_hito">
                 <span>Ingresar hito: </span><br>
-                <textarea class="texto"></textarea>
+                <textarea class="texto" name="detalle" id="detalle"></textarea>
             </div><!-- .registro_hito -->
             <div class="feedback">
                 <span>Ingrese feedback: </span><br>
-                <textarea class="texto"></textarea>
+                <textarea class="texto" name="feedback" id="feedback"></textarea>
+                <input type="hidden" name="idproy" id="idproy" value="{{ $pro->PRO_ID}}" />
+                @foreach($hitos as $hit)
+                <input type="hidden" name="idhito" id="idhito" value="{{ $hit->HIT_ID}}" />
+                @endforeach
             </div><!-- .feedback -->
             <div class="guardar_hito">
                 <button type="submit" class="guardar button">Guardar Hito</button>
@@ -82,6 +86,7 @@
         </div><!-- .registo_hito -->
     </div><!-- .registro -->
 </form><!-- .formulario_hito -->
+
 @endforeach
 @include('layouts.footer')
 
