@@ -92,7 +92,7 @@ class ProyectoController extends Controller
     }
 
     $idProyecto = DB::table('proyectos')->max('PRO_ID');
-    dd($idProyecto);
+    
     $fecha = new \DateTime();
 
     DB::table('proyectos')->insert(
