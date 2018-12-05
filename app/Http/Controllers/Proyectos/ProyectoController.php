@@ -51,21 +51,23 @@ class ProyectoController extends Controller
 
   public function mostrarAlumnosSeccion(Request $request){
     if($request->ajax()){
-      $seccionCursos = DB::table('detalle_cursos')
-                          ->select('CUR_SECCION')
-                          ->distinct()
-                          ->get();
 
       $seccionCurso = $request->query('$seccion');
 
       $alumnos = DB::table('usuarios')
                     ->join('detalle_cursos','usuarios.USU_ID','=','detalle_cursos.USU_ID')
-                    ->select('usuarios.USU_APATERNO', 'usuarios.USU_AMATERNO', 'usuarios.USU_NOMBRE')
+                    ->select('usuarios.USU_ID','usuarios.USU_APATERNO', 'usuarios.USU_AMATERNO', 'usuarios.USU_NOMBRE')
                     ->where('detalle_cursos.CUR_SECCION',$seccionCurso)
                     ->where('detalle_cursos.CUR_ID','TP401')
                     ->get();
 
-      return Response ($alumnos);
+      $salida='<option value="">--Escoja alumno--</option>';
+
+      foreach ($alumnos as $alumno){
+        $salida .= '<option value="'.$alumno->USU_ID.'">'.$alumno->USU_APATERNO.' '.$alumno->USU_AMATERNO.' '.$alumno->USU_NOMBRE.'</option>';
+      }
+
+      return Response ($salida);
     }
   }
 
@@ -78,20 +80,25 @@ class ProyectoController extends Controller
 
       //se valida que el alumno asignado no se encuentre en otro proyecto
       $verificaAsignacionAlumno = DB::table('detalle_proyectos')
-                                  ->where('DET_ALU_ID', $alumnosAsignado)
+                                  ->where('DET_ALU_ID', $alumnoAsignado)
                                   ->value('DET_ALU_ID');
 
-      if($verificaAsignacionAlumno == $alumnosAsignado){
+      if($verificaAsignacionAlumno == $alumnoAsignado){
         $alumno = Usuarios::where('USU_ID', $alumnosAsignado)
                   ->get();
 
         return view('ingreso_proyecto', compact('alumno'));
       }
     }
+
+    $idProyecto = DB::table('proyectos')->max('PRO_ID');
+    dd($idProyecto);
+    $fecha = new \DateTime();
+
     DB::table('proyectos')->insert(
-      ['PRO_ID' => $idProyecto,
-      'PRO_CUR_ID'=> $request->codigo_curso,
-      'PRO_USU_ID'=>$request->session()->get('idProfesor'),
+      ['PRO_ID' => $idProyecto+1,
+      'PRO_CUR_ID'=> $request->seccion_curso,
+      'PRO_PROF_ID'=>$request->session()->get('idProfesor'),
       'PRO_NOMBRE'=> $request->nombre_proyecto,
       'PRO_DESCRIPCION'=>$request->descripcion,
       'PRO_FECHA_INICIO'=>$fecha,
@@ -105,7 +112,7 @@ class ProyectoController extends Controller
     foreach ($alumnosAsignados as $alumnoAsignado){
       DB::table('detalle_proyectos')->insert(
         ['DET_ALU_ID' => $alumnoAsignado,
-        'PRO_ID'=> $idProyecto]
+        'PRO_ID'=> $idProyecto+1]
       );
     }
 

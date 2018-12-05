@@ -63,7 +63,7 @@
 				<label for="asignar_alumno"><i class="fas fa-minus-square eliminar_integrante" id="eliminar_integrante"></i></label>
 			</div>
 			<select class="opcion asignar_alumno" id="alumnos" name="alumno[]" required style="top:-8px; position:relative;">
-				<option value="">Escoja alumno</option>
+				<option value="">--Escoja alumno--</option>
 			</select>
 		</div>
 	</div>
@@ -92,7 +92,7 @@
 					url:'{{URL::to('buscar_seccion_alumno')}}',
 					data:{$seccion},
 					success:function(data){
-						alert(data);
+						$('.asignar_alumno').html(data);
 					}
 				});
 			});
