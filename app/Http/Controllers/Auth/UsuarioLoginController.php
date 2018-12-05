@@ -22,7 +22,7 @@ class UsuarioLoginController extends Controller{
 
         $this->validate($request,[
             'rut' => 'required',
-            'password' => 'required'
+            'password' => 'required|min:6'
         ]);
 
         $tipoUsuario = DB::table('usuarios')->where('USU_RUT', $request->rut)->value('USU_TIPO');

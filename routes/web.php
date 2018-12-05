@@ -21,6 +21,8 @@ Route::group(['middleware' => ['rutasProfesorMiddleware']], function () {
   Route::get('/lista_proyecto', 'Auth\UsuarioController@index')->name('lista_proyecto');
   Route::get('ingreso_proyecto', 'Proyectos\ProyectoController@index')->name('ingreso_proyecto');
   Route::post('guardar_proyecto','Proyectos\ProyectoController@guardarProyecto')->name('guardar_proyecto');
+  Route::get('/buscar_alumno_asignado','Proyectos\ProyectoController@comprobarAsignacionAlumno')->name('buscar_alumno_asignado');
+  Route::get('/buscar_seccion_alumno','Proyectos\ProyectoController@mostrarAlumnosSeccion')->name('buscar_seccion_alumno');
 });
 
 Route::group(['middleware' => ['rutasAdministrativoMiddleware']], function(){

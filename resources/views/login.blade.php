@@ -15,8 +15,8 @@
         <div class="ingreso_usuario  clearfix">
           <h2>ingreso de usuarios</h2>
           <div class="contenedor_usuario">
-            <input class="usuario" type="text" id="rut" name="rut" placeholder="Ingrese rut usuario" maxlength="12" required>
-            <br>
+            <input class="usuario" type="text" id="rut" name="rut" placeholder="Ingrese rut usuario" maxlength="12" value="{{ old('rut')}}" required>
+          <br>
           </div>
           <div class="contenedor_contraseña">
             <input id="contraseña" class="contraseña" type="Password" name="password" placeholder="Ingrese contraseña" maxlength="8" required>
@@ -26,6 +26,8 @@
               <br>
             </div>
           </div>
+          {{ $errors->first('password')}}
+          <br>
           <div class="guardar_usuario">
             <input class="recordar_usuario" type="checkbox" name="recordar_usuario"><label>Recuerdame en este equipo</label>
             <button type="submit" class="button ingresar" onClick="formateaRut(getElementById('rut'));">Ingresar</button>
