@@ -21,7 +21,7 @@ class ProyectoController extends Controller
                         ->distinct()
                         ->get();
 
-    return view ('ingreso_proyecto',compact('seccionCursos','alumnos'));
+    return view ('ingreso_proyecto',compact('seccionCursos'));
   }
 
   public function comprobarAsignacionAlumno(Request $request){

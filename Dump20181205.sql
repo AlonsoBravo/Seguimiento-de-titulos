@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `ventas` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci */;
-USE `ventas`;
+CREATE DATABASE  IF NOT EXISTS `seguimiento_titulos` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `seguimiento_titulos`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: ventas
+-- Host: localhost    Database: seguimiento_titulos
 -- ------------------------------------------------------
 -- Server version	5.7.20-log
 
@@ -18,274 +18,201 @@ USE `ventas`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `clientes`
+-- Table structure for table `cursos`
 --
 
-DROP TABLE IF EXISTS `clientes`;
+DROP TABLE IF EXISTS `cursos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `clientes` (
-  `rut_cliente` varchar(8) COLLATE utf8_spanish2_ci NOT NULL,
-  `dv` char(1) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `apellido1` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `apellido2` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `fono_contacto` varchar(12) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `email` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `direccion_particular` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  PRIMARY KEY (`rut_cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+CREATE TABLE `cursos` (
+  `CUR_ID` varchar(20) NOT NULL COMMENT 'Codigo del Curso',
+  `CUR_NOMBRE` varchar(80) DEFAULT NULL COMMENT 'Nombre del Curso ',
+  `CUR_SEMESTRE` varchar(2) DEFAULT NULL COMMENT 'Semestre que se dicta el curso ',
+  `CUR_ANO` varchar(4) DEFAULT NULL COMMENT 'Año en que se dicta el curso\n',
+  `CUR_ID_PROF` int(11) DEFAULT NULL,
+  PRIMARY KEY (`CUR_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `clientes`
+-- Dumping data for table `cursos`
 --
 
-LOCK TABLES `clientes` WRITE;
-/*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES ('1','1','cliente 1','apellido 1','apellido 1','1234','email@mail.com','direccion 1'),('2','2','cliente 2','apellido 2','apellido 2','1234','email@mail.com','direccion 2'),('3','3','cliente 3','apellido 3','apellido 3','1234','email@mail.com','direccion 3'),('4','4','cliente 4','apellido 4','apellido 4','1234','email@mail.com','direccion 4'),('5','5','cliente 5','apellido 5','apellido 5','1234','email@mail.com','direccion 5'),('6','6','cliente 6','apellido 6','apellido 6','1234','email@mail.com','direccion 6'),('7','7','cliente 7','apellido 7','apellido 7','1234','email@mail.com','direccion 7'),('8','8','cliente 8','apellido 8','apellido 8','1234','email@mail.com','direccion 8');
-/*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+LOCK TABLES `cursos` WRITE;
+/*!40000 ALTER TABLE `cursos` DISABLE KEYS */;
+INSERT INTO `cursos` VALUES ('TP401','TALLER DE TITULO I','I','2018',51),('TP405','TALLER DE TITULO II','II','2018',51);
+/*!40000 ALTER TABLE `cursos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `detalle_oferta`
+-- Table structure for table `detalle_cursos`
 --
 
-DROP TABLE IF EXISTS `detalle_oferta`;
+DROP TABLE IF EXISTS `detalle_cursos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `detalle_oferta` (
-  `codigo_oferta` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `codigo_producto` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `descuento` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+CREATE TABLE `detalle_cursos` (
+  `DET_CUR_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `CUR_ID` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `USU_ID` int(11) NOT NULL,
+  `CUR_SECCION` int(2) DEFAULT NULL,
+  PRIMARY KEY (`DET_CUR_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `detalle_oferta`
+-- Dumping data for table `detalle_cursos`
 --
 
-LOCK TABLES `detalle_oferta` WRITE;
-/*!40000 ALTER TABLE `detalle_oferta` DISABLE KEYS */;
-INSERT INTO `detalle_oferta` VALUES ('1','702234349',3,5),('1','700622678',3,5),('2','701141036',1,10),('2','702268394',1,10);
-/*!40000 ALTER TABLE `detalle_oferta` ENABLE KEYS */;
+LOCK TABLES `detalle_cursos` WRITE;
+/*!40000 ALTER TABLE `detalle_cursos` DISABLE KEYS */;
+INSERT INTO `detalle_cursos` VALUES (1,'TP401',3,6),(2,'TP401',6,6),(3,'TP401',7,6),(4,'TP401',8,6),(5,'TP401',9,6),(6,'TP401',10,6),(7,'TP401',11,6),(8,'TP401',12,6),(9,'TP401',13,6),(10,'TP401',14,6),(11,'TP401',15,6),(12,'TP401',16,6),(13,'TP401',17,6),(14,'TP401',18,6),(15,'TP401',19,6),(16,'TP401',20,7),(17,'TP401',21,7),(18,'TP401',22,7),(19,'TP401',23,7),(20,'TP401',24,7),(21,'TP401',25,7),(22,'TP401',26,7),(23,'TP401',27,7),(24,'TP401',28,7),(25,'TP401',29,7),(26,'TP401',30,7),(27,'TP401',31,7),(28,'TP401',32,7),(29,'TP401',33,7),(30,'TP401',34,7),(31,'TP405',35,6),(32,'TP405',36,6),(33,'TP405',37,6),(34,'TP405',38,6),(35,'TP405',39,6),(36,'TP405',40,6),(37,'TP405',41,6),(38,'TP405',42,6),(39,'TP405',43,6),(40,'TP405',44,6),(41,'TP405',45,6),(42,'TP405',46,6),(43,'TP405',47,6),(44,'TP405',48,6),(45,'TP405',49,6),(46,'TP404',50,6);
+/*!40000 ALTER TABLE `detalle_cursos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `detalle_ventas`
+-- Table structure for table `detalle_proyectos`
 --
 
-DROP TABLE IF EXISTS `detalle_ventas`;
+DROP TABLE IF EXISTS `detalle_proyectos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `detalle_ventas` (
-  `id_detalle_venta` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `nombre_producto` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `valor_unitario` int(11) DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `id_venta` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `codigo_producto` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id_detalle_venta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+CREATE TABLE `detalle_proyectos` (
+  `DET_PRO_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DET_ALU_ID` int(11) NOT NULL,
+  `PRO_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`DET_PRO_ID`),
+  KEY `fk_PROYECTOS_has_ALUMNOS_ALUMNOS1_idx` (`DET_ALU_ID`),
+  KEY `fk_PROYECTOS_has_ALUMNOS_PROYECTOS1_idx` (`DET_PRO_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `detalle_ventas`
+-- Dumping data for table `detalle_proyectos`
 --
 
-LOCK TABLES `detalle_ventas` WRITE;
-/*!40000 ALTER TABLE `detalle_ventas` DISABLE KEYS */;
-INSERT INTO `detalle_ventas` VALUES ('dv01','BARRA RECTA MUUK',36,2,'v01','0700622678'),('dv02','VENDA DE BOX MUUK',5654,2,'v01','0700679287'),('dv03','PELOTA DE REACCION',7888,2,'v01','0700924864'),('dv04','LAPICES',1500,300,'v04','1');
-/*!40000 ALTER TABLE `detalle_ventas` ENABLE KEYS */;
+LOCK TABLES `detalle_proyectos` WRITE;
+/*!40000 ALTER TABLE `detalle_proyectos` DISABLE KEYS */;
+INSERT INTO `detalle_proyectos` VALUES (1,3,1),(2,32,2),(3,14,3),(4,16,4),(5,40,5);
+/*!40000 ALTER TABLE `detalle_proyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `detalles_ordenes_de_compra`
+-- Table structure for table `hitos`
 --
 
-DROP TABLE IF EXISTS `detalles_ordenes_de_compra`;
+DROP TABLE IF EXISTS `hitos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `detalles_ordenes_de_compra` (
-  `codigo_detalle_orden` varchar(15) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `codigo_orden` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `codigo_producto` varchar(15) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+CREATE TABLE `hitos` (
+  `HIT_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `HIT_PRO_ID` int(11) DEFAULT NULL,
+  `HIT_FECHA_ENTREGA` varchar(45) DEFAULT NULL,
+  `HIT_ESTADO` varchar(45) DEFAULT NULL,
+  `HIT_PORCENTAJE` decimal(3,0) DEFAULT NULL,
+  `HIT_FEEDBACK` text,
+  `HIT_SEMANA_ENTREGA` int(2) DEFAULT NULL,
+  PRIMARY KEY (`HIT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `detalles_ordenes_de_compra`
+-- Dumping data for table `hitos`
 --
 
-LOCK TABLES `detalles_ordenes_de_compra` WRITE;
-/*!40000 ALTER TABLE `detalles_ordenes_de_compra` DISABLE KEYS */;
-INSERT INTO `detalles_ordenes_de_compra` VALUES ('dtp01','coc01','0700622678',2),('dtp02','coc02','0700924864',3),('dtp03','coc03','0702015092',1),('dtp04','coc04','0702755305',2),('dtp05','coc05','0700950637',5);
-/*!40000 ALTER TABLE `detalles_ordenes_de_compra` ENABLE KEYS */;
+LOCK TABLES `hitos` WRITE;
+/*!40000 ALTER TABLE `hitos` DISABLE KEYS */;
+INSERT INTO `hitos` VALUES (1,1,NULL,NULL,NULL,NULL,1),(2,1,NULL,NULL,NULL,NULL,2),(3,1,NULL,NULL,NULL,NULL,3),(4,1,NULL,NULL,NULL,NULL,4),(5,1,NULL,NULL,NULL,NULL,5),(6,1,NULL,NULL,NULL,NULL,6),(7,1,NULL,NULL,NULL,NULL,7),(8,1,NULL,NULL,NULL,NULL,8),(9,1,NULL,NULL,NULL,NULL,9),(10,1,NULL,NULL,NULL,NULL,10),(11,1,NULL,NULL,NULL,NULL,11),(12,1,NULL,NULL,NULL,NULL,12),(13,1,NULL,NULL,NULL,NULL,13),(14,1,NULL,NULL,NULL,NULL,14),(15,1,NULL,NULL,NULL,NULL,15),(16,1,NULL,NULL,NULL,NULL,16),(17,1,NULL,NULL,NULL,NULL,17),(18,1,NULL,NULL,NULL,NULL,18),(19,2,NULL,NULL,NULL,NULL,1),(20,2,NULL,NULL,NULL,NULL,2),(21,2,NULL,NULL,NULL,NULL,3),(22,2,NULL,NULL,NULL,NULL,4),(23,2,NULL,NULL,NULL,NULL,5),(24,2,NULL,NULL,NULL,NULL,6),(25,2,NULL,NULL,NULL,NULL,7),(26,2,NULL,NULL,NULL,NULL,8),(27,2,NULL,NULL,NULL,NULL,9),(28,2,NULL,NULL,NULL,NULL,10),(29,2,NULL,NULL,NULL,NULL,11),(30,2,NULL,NULL,NULL,NULL,12),(31,2,NULL,NULL,NULL,NULL,13),(32,2,NULL,NULL,NULL,NULL,14),(33,2,NULL,NULL,NULL,NULL,15),(34,2,NULL,NULL,NULL,NULL,16),(35,2,NULL,NULL,NULL,NULL,17),(36,2,NULL,NULL,NULL,NULL,18),(37,3,NULL,NULL,NULL,NULL,1),(38,3,NULL,NULL,NULL,NULL,2),(39,3,NULL,NULL,NULL,NULL,3),(40,3,NULL,NULL,NULL,NULL,4),(41,3,NULL,NULL,NULL,NULL,5),(42,3,NULL,NULL,NULL,NULL,6),(43,3,NULL,NULL,NULL,NULL,7),(44,3,NULL,NULL,NULL,NULL,8),(45,3,NULL,NULL,NULL,NULL,9),(46,3,NULL,NULL,NULL,NULL,10),(47,3,NULL,NULL,NULL,NULL,11),(48,3,NULL,NULL,NULL,NULL,12),(49,3,NULL,NULL,NULL,NULL,13),(50,3,NULL,NULL,NULL,NULL,14),(51,3,NULL,NULL,NULL,NULL,15),(52,3,NULL,NULL,NULL,NULL,16),(53,3,NULL,NULL,NULL,NULL,17),(54,3,NULL,NULL,NULL,NULL,18),(55,4,NULL,NULL,NULL,NULL,1),(56,4,NULL,NULL,NULL,NULL,2),(57,4,NULL,NULL,NULL,NULL,3),(58,4,NULL,NULL,NULL,NULL,4),(59,4,NULL,NULL,NULL,NULL,5),(60,4,NULL,NULL,NULL,NULL,6),(61,4,NULL,NULL,NULL,NULL,7),(62,4,NULL,NULL,NULL,NULL,8),(63,4,NULL,NULL,NULL,NULL,9),(64,4,NULL,NULL,NULL,NULL,10),(65,4,NULL,NULL,NULL,NULL,11),(66,4,NULL,NULL,NULL,NULL,12),(67,4,NULL,NULL,NULL,NULL,13),(68,4,NULL,NULL,NULL,NULL,14),(69,4,NULL,NULL,NULL,NULL,15),(70,4,NULL,NULL,NULL,NULL,16),(71,4,NULL,NULL,NULL,NULL,17),(72,4,NULL,NULL,NULL,NULL,18),(73,5,NULL,NULL,NULL,NULL,1),(74,5,NULL,NULL,NULL,NULL,2),(75,5,NULL,NULL,NULL,NULL,3),(76,5,NULL,NULL,NULL,NULL,4),(77,5,NULL,NULL,NULL,NULL,5),(78,5,NULL,NULL,NULL,NULL,6),(79,5,NULL,NULL,NULL,NULL,7),(80,5,NULL,NULL,NULL,NULL,8),(81,5,NULL,NULL,NULL,NULL,9),(82,5,NULL,NULL,NULL,NULL,10),(83,5,NULL,NULL,NULL,NULL,11),(84,5,NULL,NULL,NULL,NULL,12),(85,5,NULL,NULL,NULL,NULL,13),(86,5,NULL,NULL,NULL,NULL,14),(87,5,NULL,NULL,NULL,NULL,15),(88,5,NULL,NULL,NULL,NULL,16),(89,5,NULL,NULL,NULL,NULL,17),(90,5,NULL,NULL,NULL,NULL,18);
+/*!40000 ALTER TABLE `hitos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `familia_productos`
+-- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `familia_productos`;
+DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `familia_productos` (
-  `codigo_Familia` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `nombre_familia` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  PRIMARY KEY (`codigo_Familia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `familia_productos`
+-- Dumping data for table `migrations`
 --
 
-LOCK TABLES `familia_productos` WRITE;
-/*!40000 ALTER TABLE `familia_productos` DISABLE KEYS */;
-INSERT INTO `familia_productos` VALUES ('1','ARTES MARCIALES '),('10','CUERDAS DE SALTO'),('11','VALLAS DE ENTRENAMIENTO '),('12','SET DE AGILIDAD'),('13','CONOS MUUK'),('14','CROSSFIT'),('15','FITNESS, YOGA Y PILATES'),('16','REDES '),('17','PSICOMOTRICIDAD'),('18','VOLEIBOL'),('19','TENIS, PING PONG Y BADMINTONG'),('2','ATLETISMO'),('20','GIMNASIA'),('21','BOLSOS DEPORIVOS '),('22','PENALTY'),('23','UTILES'),('3','BALONES'),('4','PENALTY'),('5','ENTRENAMIENTO'),('6','ENTRNAMIENTO CON PESO'),('7','ACCESORIOS'),('8','BARRAS'),('9','BANDAS ELASTICAS');
-/*!40000 ALTER TABLE `familia_productos` ENABLE KEYS */;
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2018_11_21_224240_create_detalle_curso_table',2);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `medios_pagos`
+-- Table structure for table `proyectos`
 --
 
-DROP TABLE IF EXISTS `medios_pagos`;
+DROP TABLE IF EXISTS `proyectos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `medios_pagos` (
-  `codig_medio_pago` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `nombre_medio_pago` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`codig_medio_pago`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+CREATE TABLE `proyectos` (
+  `PRO_ID` int(11) NOT NULL COMMENT 'ID correlativo de proyectos',
+  `PRO_CUR_ID` int(11) DEFAULT NULL,
+  `PRO_PROF_ID` int(11) DEFAULT NULL COMMENT 'ID Profesor Guia - FK tabla Usuarios',
+  `PRO_NOMBRE` varchar(128) DEFAULT NULL,
+  `PRO_DESCRIPCION` text,
+  `PRO_FECHA_INICIO` date DEFAULT NULL,
+  `PRO_SEMESTRE` varchar(2) DEFAULT NULL,
+  `PRO_PORCENTAJE_ACT` varchar(3) DEFAULT NULL,
+  `PRO_ESTADO` int(1) DEFAULT NULL COMMENT 'Estado del Proyecto\n0:Activo\n1:Inactivo',
+  `PRO_SECCION` int(2) DEFAULT NULL,
+  PRIMARY KEY (`PRO_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `medios_pagos`
+-- Dumping data for table `proyectos`
 --
 
-LOCK TABLES `medios_pagos` WRITE;
-/*!40000 ALTER TABLE `medios_pagos` DISABLE KEYS */;
-INSERT INTO `medios_pagos` VALUES ('cmp01','efectivo',1),('cmp02','tarjeta credito',1);
-/*!40000 ALTER TABLE `medios_pagos` ENABLE KEYS */;
+LOCK TABLES `proyectos` WRITE;
+/*!40000 ALTER TABLE `proyectos` DISABLE KEYS */;
+INSERT INTO `proyectos` VALUES (1,NULL,1,'prueba','prueba','2018-11-30','I','0',1,6),(2,7,1,'prueba 2','prueba 2','2018-11-30','I','0',1,7),(3,6,1,'prueba 3','prueba 3','2018-11-30','I','0',1,6),(4,6,1,'prueba 4','prueba 4','2018-11-30','I','0',1,6),(5,6,1,'prueba 5','prueba 5','2018-11-30','I','0',1,6);
+/*!40000 ALTER TABLE `proyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `ofertas`
+-- Table structure for table `usuarios`
 --
 
-DROP TABLE IF EXISTS `ofertas`;
+DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ofertas` (
-  `codigo_oferta` int(3) NOT NULL AUTO_INCREMENT,
-  `nombre_oferta` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `fecha_inicio` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `fecha_termino` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `estado_ofertas` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`codigo_oferta`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+CREATE TABLE `usuarios` (
+  `USU_ID` int(11) NOT NULL COMMENT 'ID del Usuario',
+  `USU_RUT` varchar(12) DEFAULT NULL COMMENT 'Rut del Usuario \nFormato: 11.111.111-1\n',
+  `USU_NOMBRE` varchar(50) DEFAULT NULL COMMENT 'Nombre completo del Usuario',
+  `USU_APATERNO` varchar(50) DEFAULT NULL COMMENT 'Apellido Paterno Usuario',
+  `USU_AMATERNO` varchar(50) DEFAULT NULL COMMENT 'Apellido Materno Usuario',
+  `USU_CORREO` varchar(100) DEFAULT NULL COMMENT 'Correo electronico del Usuario',
+  `USU_TELEFONO` varchar(20) DEFAULT NULL COMMENT 'Teléfono del Usuario',
+  `password` varchar(255) DEFAULT NULL COMMENT 'Contraseña para ingreso al sistema \\\\\\\\nA guardar en MD5\\\\\\\\n',
+  `USU_ESTADO` varchar(15) DEFAULT NULL COMMENT 'Estados: \nMatriculad\nNo Matriculado\nActivo\nInactivo\n ',
+  `USU_TIPO` int(1) DEFAULT NULL COMMENT 'Tipo de Usuario: \n0:Alumno\n1:Profesor\n2:Administrativo\n',
+  PRIMARY KEY (`USU_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ofertas`
+-- Dumping data for table `usuarios`
 --
 
-LOCK TABLES `ofertas` WRITE;
-/*!40000 ALTER TABLE `ofertas` DISABLE KEYS */;
-INSERT INTO `ofertas` VALUES (1,'oferta 1','2018-12-05','2018-12-06',1),(2,'oferta 2','2018-12-03','2018-12-05',1);
-/*!40000 ALTER TABLE `ofertas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ordenes_de_compra`
---
-
-DROP TABLE IF EXISTS `ordenes_de_compra`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ordenes_de_compra` (
-  `codigo_orden` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `rut_proveedor` varchar(8) COLLATE utf8_spanish2_ci NOT NULL,
-  `fecha_emision` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `estado_orden` varchar(20) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  PRIMARY KEY (`codigo_orden`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ordenes_de_compra`
---
-
-LOCK TABLES `ordenes_de_compra` WRITE;
-/*!40000 ALTER TABLE `ordenes_de_compra` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ordenes_de_compra` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `productos`
---
-
-DROP TABLE IF EXISTS `productos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `productos` (
-  `codigo_producto` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `codigo_Familia` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `rut_proveedor` varchar(8) COLLATE utf8_spanish2_ci NOT NULL,
-  `nombre_producto` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `valor_unitario` int(11) DEFAULT NULL,
-  `stock` int(11) DEFAULT NULL,
-  `stock_minimo` int(11) DEFAULT NULL,
-  `stock_maximo` int(11) DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`codigo_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `productos`
---
-
-LOCK TABLES `productos` WRITE;
-/*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES ('0700622678','6','3','BARRA RECTA MUUK',36,420,5,1000,1),('0700679287','2','4','VENDA DE BOX MUUK',5654,774,5,1000,1),('0700924864','11','3','PELOTA DE REACCION',7888,869,5,1000,1),('0700950637','11','3','BASE ESTACA AGILIDAD GOMA VIXEN',3675,182,5,1000,1),('0701115751','13','4','ANILLO DE PILATES M??K',8223,951,5,1000,1),('0701141036','14','3','HULA HULA PROFESIONAL MUUK',9412,645,5,1000,1),('0701342348','5','3','EXPANDER TUBE MUUK',3580,318,5,1000,1),('0701656986','14','3','CLAVA DE GIMNASIA OFICIAL',9038,219,5,1000,1),('0701716780','12','3','PESA MANCUERNA DE VINILO',8459,289,5,1000,1),('0701837530','2','4','GUANTILLA MUUK PALMA LIBRE',3300,469,5,1000,1),('0702015092','14','3','HULA HULA PROFESIONAL MUUK',5445,218,5,1000,1),('0702031151','2','1','PROTECTOR BUCAL MUUK',1213,790,5,1000,1),('0702079539','7','3','BOLSO DEPORTIVO CLUB PLUS BOLSO- DEPORTIVO MUUK HE',9597,208,5,1000,1),('0702140145','12','3','BALON MEDICINAL DE SILICONA SOFT 1, 2,3 y 5KG',7475,324,5,1000,1),('0702202997','13','3','TRAMPOLIN M??K',3382,130,5,1000,1),('0702234349','11','3','SET DE BANDERIN DE CORNER DESARMABLE VIXEN',9660,258,5,1000,1),('0702247617','10','3','CUERDA DE SALTO M??K',9696,219,5,1000,1),('0702268394','5','3','POWER TUBE RECUBIERTA CON MANILLAS M??K',8442,487,5,1000,1),('0702405301','6','3','BARRA PUERTA MULTIFUNCION MUUK',647,664,5,1000,1),('0702446037','8','3','CONOS',4844,42,5,1000,1),('0702555583','11','3','BASE MULTIPRO?SITO',953,572,5,1000,1),('0702616384','12','4','CHAQUETA CON PESO MUUK',8996,685,5,1000,1),('0702724811','3','2','TESTIMONIO ALUMINIO',9974,169,5,1000,1),('0702755305','4','2','JAULA PARA BALONES',6844,90,5,1000,1),('0703022588','13','3','BOLSO PORTA MAT MUUK',4537,41,5,1000,1),('0703127272','3','2','BALA DE LANZAMIENTO ESCOLAR ACERO',2155,639,5,1000,1),('0703155327','2','1','GUANTES BOX MUUK PU',7675,333,5,1000,1),('0703205285','13','3','BOSU MUUK',6150,599,5,1000,1),('0703287625','8','3','SET DE CONOS ARITMETICO MUUK',810,136,5,1000,1),('0703450398','5','3','BANDAS EL?STICAS M??K',3557,402,5,1000,1),('0703478215','10','3','CUERDA DE SALTO CON PIOLA DE ACERO M??K',432,638,5,1000,1),('0703553089','2','4','GUANTES BOX MUUK NI?O',758,789,5,1000,1),('0703583700','10','3','CUERDA DE SALTO CON CONTADOR MECANICO M??K',6831,165,5,1000,1),('0703636838','11','3','PARACAIDAS DE RESISTENCIA',1586,417,5,1000,1),('0703943362','12','3','PESO TOBILLO - MU?ECA MUUK',4788,434,5,1000,1),('0704171973','9','3','PESA RUSA KETELBELLS MUUK',2080,592,5,1000,1),('0704322958','14','3','HULA HULA HOOP DUAL',5063,611,5,1000,1),('0704473692','3','4','TACO DE PARTIDA MARK IV',7102,228,5,1000,1),('0704543714','13','3','STEP MUUK',5841,228,5,1000,1),('0704577303','3','2','PELOTA DE LANZAMIENTO ESCOLAR SOFT',9956,366,5,1000,1),('0704702466','11','3','PIZARRA DE ENTRENAMIENTO 4MM VIXEN',2338,65,5,1000,1),('0704707976','10','3','CUERDA DE SALTO CON CONTADOR DIGITAL M??K',7900,72,5,1000,1),('0704781908','10','3','CUERDA DE SALTO SNIPER DE CUERO',3622,637,5,1000,1),('0705085251','8','3','SET DE CONOS ALFABETICOS MUUK',8207,170,5,1000,1),('0705145884','3','4','CARRO PORTA JABALINA MUUK 30 UNID',7734,983,5,1000,1),('0705318393','10','3','CUERDA DE SALTOS DE CUERO M??K',8227,62,5,1000,1),('0705339893','14','3','CUERDAS DE GMNASIA',4751,784,5,1000,1),('0705643782','5','3','BANDA ELASTICA TUBULAR POWER MUUK ALTA',9773,231,5,1000,1),('0705692356','12','4','DISCOS OLIMPICOS CON AZA',6510,417,5,1000,1),('0705827612','11','3','SET DE AROS AGILIDAD MUUK 11 UN',4439,275,5,1000,1),('0705957979','2','1','CANILLERA ARTES MARCIALES MUUK',361,869,5,1000,1),('0706068578','4','3','BALON DE FUTSAL MUUK TRAINING',3933,494,5,1000,1),('0706283355','11','3','TARJETA ARBITRO MUUK',5517,385,5,1000,1),('0706388790','6','3','BARRA PUERTA MUUK',2179,31,5,1000,1),('0706591006','4','2','CARRO PORTA BALONES PLEGABLE',2222,770,5,1000,1),('0706625975','11','3','BASE ESTACA AGILIDAD PVC VIXEN',6155,472,5,1000,1),('0706719269','2','1','GUANTILLA MMA MUUK',8900,81,5,1000,1),('0706720908','2','1','PERA BOX MUUK CON ROTOR',7650,694,5,1000,1),('0706770321','2','1','PECHERA PUNTO BLANCO',18000,80,5,1000,1),('0706851018','2','1','PERA BOX MUUK CON ELASTICO',6959,959,5,1000,1),('0706896207','3','2','DISCO DE LANZAMIENTO GOMA',6553,637,5,1000,1),('0707126677','6','3','CAYERAS DE CUERO MUUK',203,53,5,1000,1),('0707192603','11','3','ESTACAS DE SLALOM',6086,631,5,1000,1),('0707298517','10','3','CUERDA DE SALTO PREMIUN',9497,841,5,1000,1),('0707319620','11','3','BARRERA DE PENALES MUUK',6468,892,5,1000,1),('0707624893','2','1','GUANTILLA MUUK TIPO GARRA',13000,534,5,1000,1),('0707707336','3','4','MARTILLO DE LANZAMIENTO INICIACI?N',9017,965,5,1000,1),('0707846859','11','3','BANDERAS DE GUARDALINEAS',6957,370,5,1000,1),('0708084686','6','3','BARRA MANCUERNA CROMADA MUUK',1784,728,5,1000,1),('0708100544','6','3','BARRA CURVA Z MUUK',813,452,5,1000,1),('0708108138','14','3','CLAVA DE GIMNASIA OFICIAL',4910,16,5,1000,1),('0708181556','13','4','DISCO DE BALANCE MUUK MADERA',8179,928,5,1000,1),('0708212980','11','3','ESTACAS DE AGILIDAD MUUK CON RESORTE',5150,381,5,1000,1),('0708276482','11','3','CRONOMETRO DIGITAL MUUK',8011,374,5,1000,1),('0708301727','12','3','BALON MEDICINAL DE CROSSFIT MUUK 3, 5, 8 y 10KG',7670,316,5,1000,1),('0708390017','8','3','SET DE CONOS NUMERICOS MUUK',5616,631,5,1000,1),('0708593410','14','3','CUERDAS DE GMNASIA',1617,326,5,1000,1),('0708764045','3','2','VALLA DE SALTO MUUK ATLETISMO CLASSIC',9244,531,5,1000,1),('0708884946','10','3','CUERDA DE SALTO CON CONTADOR MECANICO VIXEN',8994,21,5,1000,1),('0709154965','11','3','SET DE BANDERIN DE CORNER CON RESORTE VIXEN',7911,181,5,1000,1),('0709156179','2','1','PALMETAS MUUK',35000,890,5,1000,1),('0709209800','14','3','HULA HULA HOOP DUAL',6863,330,5,1000,1),('0709534829','2','1','PROTECTOR GENITAL',15000,505,5,1000,1),('0709605677','7','3','BOLSO PORTA BALONES',4974,372,5,1000,1),('0710172998','1','1','RODILLERA ROTULIANA MUUK CON VELCRO',6300,515,5,1000,1),('0710193138','2','4','GUANTES BOX MUUK CUERO',9926,463,5,1000,1),('0710223523','11','3','PORTABOTELLA MUUK',5015,801,5,1000,1),('0710463885','14','3','HULA HULA PROFESIONAL MUUK',7926,326,5,1000,1),('0710480437','10','3','HAND GRIP M??K',8413,153,5,1000,1),('0710485222','12','3','GUANTES DE ENTRENAMIENTO',3767,412,5,1000,1),('0710517892','2','1','TATAMIS O PISOS PARA TAEKWONDO M??K',4701,519,5,1000,1),('0710611987','12','3','PESO TOBILLO-MU?ECA MUUK',5495,117,5,1000,1),('0710714687','11','3','CINTA DE CAPITAN MUUK',6629,760,5,1000,1),('0710829775','11','3','ARCOS REBOTADOR',8670,493,5,1000,1),('0710970072','6','3','BARRA ROMANA MUUK',7949,41,5,1000,1),('0711050559','9','3','TRX MUUK',4293,335,5,1000,1),('0711105062','5','3','BANDA ELASTICA TUBULAR POWER MUUK',4959,900,5,1000,1),('0711266062','7','3','BOLSO RETRO',9293,682,5,1000,1),('0711277674','3','4','JABALINAS DE ENTRENAMIENTO',3449,839,5,1000,1),('0711310640','3','2','VALLA DE SALTO MUUK ATLETISMO SUPER JUNIOR',3949,370,5,1000,1),('0711532956','14','3','CLAVA DE GIMNASIA OFICIAL',9618,732,5,1000,1),('0711569446','13','3','YOGA MAT',4052,80,5,1000,1),('0711573594','13','3','BALON DE PILATES ANTI-BURST',2030,12,5,1000,1),('0711613069','3','2','TACO DE PARTIDA INTERNACIONAL',8169,335,5,1000,1),('0711730397','3','4','JABALINA DE COMPETICION MUUK IAAF 800 GRS',9390,559,5,1000,1),('0711801097','8','3','SET LENTEJAS',3122,289,5,1000,1),('0711872580','9','3','CUERDA DE CROSSFIT MUUK',3685,670,5,1000,1),('0711947839','14','3','CLAVA DE GIMNASIA OFICIAL',9241,587,5,1000,1),('0712007378','4','3','BALON DE VOLEIBOL MUUK TRAINNING',8290,720,5,1000,1),('0712234014','3','2','PELOTAS DE LANZAMIENTO',8158,478,5,1000,1),('0712360611','11','3','ESCALERA DE AGILIDAD',2764,246,5,1000,1),('0712556646','2','1','CANILLERA ARTES MARCIALES PRO MUUK',994,768,5,1000,1),('0712582253','14','3','HULA HULA PROFESIONAL MUUK',8249,472,5,1000,1),('0712830338','3','4','DISCO DE LANZAMIENTO ACERO',4075,146,5,1000,1),('0712894483','2','1','GUANTES FOCO MUUK',25000,8,5,1000,1),('0712931029','8','3','CONOS MUUK PVC 18 CM',477,920,5,1000,1),('0712949982','6','3','BARRA DE ACERO PUSH UP',8183,182,5,1000,1),('0712996167','4','3','BALON DE HANDBALL MUUK OFICIAL',279,49,5,1000,1),('0713041698','8','3','SET DE LENTEJAS MUUK 20 UNIDADES',5591,106,5,1000,1),('0713153446','13','4','RUEDA ABROMINAL DOBLE M??K',4318,225,5,1000,1),('0713173235','6','3','MAGNESIO MUUK',2554,714,5,1000,1),('0713379809','12','3','SACO DE CROSSFIT MUUK BULGARO 3, 5, 8 y 10KG',7228,34,5,1000,1),('0713564363','12','3','BALON MEDICINAL MUUK CON AZA 3 y 5KG',2675,691,5,1000,1),('0713642948','14','3','HULA HULA HOOP DUAL',5485,487,5,1000,1),('0713703274','8','3','CONOS MUUK PVC 28 CM',7803,997,5,1000,1),('0713704645','12','3','BALON MEDICINAL MUUK',5768,602,5,1000,1),('0713786143','9','3','ANILLAS DE CROSSFIT',3643,355,5,1000,1),('0713837393','13','3','DISCO DE BALANCE MINI BOSU Y MASAJES M??K',8441,139,5,1000,1),('0713844321','2','1','CABEZAL ARTES MARCIALES CON REJILLA MUUK',25000,792,5,1000,1),('0713891439','14','4','CUERDAS DE GMNASIA',4149,285,5,1000,1),('0713964236','11','3','SET BANDERAS CORNER GOLD-100',8452,843,5,1000,1),('0714043757','11','3','PETOS DEPORTIVOS',2459,377,5,1000,1),('0714124408','3','2','TACO DE PARTIDA CLASSIC',1535,826,5,1000,1),('0714453671','13','3','DISCO DE BALANCE Y MASAJES AIR PAD M??K',1496,810,5,1000,1),('0714640244','4','3','BALON DE FUTBOL MUUK TRAINING',1062,28,5,1000,1),('0714770360','2','1','CABEZAL TKD MUUK OFICIAL',25000,581,5,1000,1),('0714792980','14','4','CUERDAS DE GMNASIA',539,225,5,1000,1),('0715069566','11','3','ESCALERA CUADRUPLE',4764,399,5,1000,1),('0715167619','7','3','BOLSO DEPORTIVO SPACER',4309,815,5,1000,1),('0715346456','3','2','JABALINA INICIACION TURBO',9585,612,5,1000,1),('0715411518','14','3','HULA HULA HOOP DUAL',3315,859,5,1000,1),('1','23','1','LAPICES',1500,700,5,1000,1);
-/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ventas`
---
-
-DROP TABLE IF EXISTS `ventas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ventas` (
-  `id_venta` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `rut_cliente` varchar(8) COLLATE utf8_spanish2_ci NOT NULL,
-  `codig_medio_pago` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
-  `fecha_venta` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `monto_total` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_venta`),
-  KEY `rut_cliente` (`rut_cliente`),
-  KEY `codig_medio_pago` (`codig_medio_pago`),
-  CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`rut_cliente`) REFERENCES `clientes` (`rut_cliente`),
-  CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`codig_medio_pago`) REFERENCES `medios_pagos` (`codig_medio_pago`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ventas`
---
-
-LOCK TABLES `ventas` WRITE;
-/*!40000 ALTER TABLE `ventas` DISABLE KEYS */;
-INSERT INTO `ventas` VALUES ('v01','1','cmp01','2018-01-01',1500),('v02','2','cmp02','2018-02-01',3000),('v03','3','cmp01','2018-03-01',5000),('v04','1','cmp01','2018-11-06',450000);
-/*!40000 ALTER TABLE `ventas` ENABLE KEYS */;
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'17.821.160-9','Alonso','Bravo','Alegria','iOvCblxeAn@gmail.com','912345678','$2y$10$e1Ma7dXXExt1t.irdhfu4etNyP9lXvnF1SJxQ9RPQTKGqkiXfVRZ.','activo',0),(2,'16.143.858-8','Karina','Morales','Mora','yCYfSIKwPu@gmail.com','912345678','$2y$10$1IWzLyL0Zm97gAIugHjfuOmwCAb160VMN8vSSbeC3hRfhzbLKHBHa','activo',1),(3,'24.950.456-4','Ignacio','Bravo','Morales','j0DYRJc8Xb@gmail.com','912345678','$2y$10$dz1qzXyCZk/3wUiFpaE9GeqHjZD2qioNWNwc9Jre34yshBwx3MRxe','activo',2),(4,'3-5','Diego','Marquisio','Caceres','diegomarquisiocaceres@ciisa.cl','610732332','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',1),(5,'4-3','Rodrigo','Riccardi','Michelini','rodrigoriccardimichelini@ciisa.cl','525062083','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',1),(6,'5-1','Cristofer','Rodriguez','Cabrera','cristoferrodriguezcabrera@ciisa.cl','840978455','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(7,'6-k','Andres','Rodriguez','Cabrera','andresrodriguezcabrera@ciisa.cl','565916908','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(8,'7-8','Alonso','Toscano','Rodriguez','alonsotoscanorodriguez@ciisa.cl','775471566','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(9,'8-6','Renato','Umpierrez','Gonzalez','renatoumpierrezgonzalez@ciisa.cl','502341936','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(10,'9-4','Gonzalo','Graziuso','Piccini','gonzalograziusopiccini@ciisa.cl','476094219','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(11,'10-8','Roman','Rocha','Baldi','romanrochabaldi@ciisa.cl','382213394','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(12,'11-6','Damian','Arturo','Loureiro','damianarturoloureiro@ciisa.cl','779336935','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(13,'12-4','Mario','Odazzio','Cuadra','marioodazziocuadra@ciisa.cl','372658758','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(14,'13-2','Felipe','Cittadino','Preti','felipecittadinopreti@ciisa.cl','391959932','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(15,'14-0','Marco','Gonzalez','Banfi','marcogonzalezbanfi@ciisa.cl','428687158','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(16,'15-9','Alejandro','Bozzolasco','Romero','alejandrobozzolascoromero@ciisa.cl','840136479','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(17,'16-7','Esteban','Echevarria','Olmos','estebanechevarriaolmos@ciisa.cl','635252671','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(18,'17-5','Diego','De Aziz','Foliadoso','diegode azizfoliadoso@ciisa.cl','669247135','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(19,'18-3','Pablo','Brescia','Rodriguez','pablobresciarodriguez@ciisa.cl','425662781','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(20,'19-1','Ricardo','Arenas','Barreiro','ricardoarenasbarreiro@ciisa.cl','538217419','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(21,'20-5','Nadia','Deleo','Mas','nadiadeleomas@ciisa.cl','963257675','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(22,'21-3','Maria','Carriquiry','Mendiola','mariacarriquirymendiola@ciisa.cl','767515140','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(23,'22-1','Helena','Chaves','Miraballes','helenachavesmiraballes@ciisa.cl','503640769','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(24,'23-k','Rocio','Gonzalez','Zas','rociogonzalezzas@ciisa.cl','881145821','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(25,'24-8','Alberto','Vera','Barreto','albertoverabarreto@ciisa.cl','678108837','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(26,'25-6','Juan','Eccher','Machado','juanecchermachado@ciisa.cl','312007140','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(27,'26-4','Pedro','Sanchez','Rodriguez','pedrosanchezrodriguez@ciisa.cl','602337469','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(28,'27-2','Diego','Centurion','Arballo','diegocenturionarballo@ciisa.cl','891169155','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(29,'28-0','Rodrigo','Bonino','Peirano','rodrigoboninopeirano@ciisa.cl','518208007','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(30,'29-9','Cristofer','Echeverry','Cuenca','cristoferecheverrycuenca@ciisa.cl','991849595','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(31,'30-2','Andres','Betolaza','Cafferata','andresbetolazacafferata@ciisa.cl','535707378','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(32,'31-0','Alonso','Corral','Ferreira','alonsocorralferreira@ciisa.cl','921673182','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(33,'32-9','Renato','Balostro','Campos','renatobalostrocampos@ciisa.cl','775482391','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(34,'33-7','Gonzalo','Brause','Berreta','gonzalobrauseberreta@ciisa.cl','734157456','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(35,'34-5','Roman','Castelar','Rodriguez','romancastelarrodriguez@ciisa.cl','475833333','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(36,'35-3','Damian','Couriel','Curiel','damiancourielcuriel@ciisa.cl','865779287','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(37,'36-1','Mario','Diaz','Acosta','mariodiazacosta@ciisa.cl','878041533','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(38,'37-k','Felipe','Diaz','Acosta','felipediazacosta@ciisa.cl','443038993','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(39,'38-8','Marco','Zunino','Monserrat','marcozuninomonserrat@ciisa.cl','476438034','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(40,'39-6','Alejandro','Garcia','Rivero','alejandrogarciarivero@ciisa.cl','717747881','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(41,'40-k','Esteban','De La Iglesia','Medina','estebande la iglesiamedina@ciisa.cl','694063002','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(42,'41-8','Diego','Reyes','Oehninger','diegoreyesoehninger@ciisa.cl','613389350','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(43,'42-6','Pablo','Casas','Menditeguy','pablocasasmenditeguy@ciisa.cl','559934403','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(44,'43-4','Ricardo','Andrade','Valdez','ricardoandradevaldez@ciisa.cl','617548917','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(45,'44-2','Nadia','Gonzalez','Buceta','nadiagonzalezbuceta@ciisa.cl','793515447','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(46,'45-0','Maria','Queijo','Nougue','mariaqueijonougue@ciisa.cl','634971897','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(47,'46-9','Helena','Boix','Vilaro','helenaboixvilaro@ciisa.cl','948585682','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(48,'47-7','Rocio','Brusa','Gonzalez','rociobrusagonzalez@ciisa.cl','825501712','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(49,'48-5','Alberto','Perdomo','Gamarra','albertoperdomogamarra@ciisa.cl','788727621','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(50,'49-3','Dionicio','Giambruno','Volpi','dioniciogiambrunovolpi@ciisa.cl','977747351','$2y$12$EgYKayHshHlRbRgxCsJd2.xPQaKZnNk.RlUZXL8mjagNpxZHUr0dm','Activo',2),(51,'11-1','Patricio','Sorich','Sorich','iOvCblxeAn@gmail.com','912345678','$2y$10$e1Ma7dXXExt1t.irdhfu4etNyP9lXvnF1SJxQ9RPQTKGqkiXfVRZ.','Activo',0);
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -297,4 +224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-05 11:45:40
+-- Dump completed on 2018-12-05 12:07:09
