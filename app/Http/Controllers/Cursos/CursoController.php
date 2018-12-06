@@ -10,8 +10,11 @@ use App\Http\Controllers\Controller;
 class CursoController extends Controller
 {
 
-    public function index(){
-        $cursos = Curso::all();
+    public function index(Request $request){
+        $cursos = DB::table('cursos')
+                  ->where('CUR_ID_PROF', $request->session()->get('idProfesor'))
+                  ->get();
+                    
         return view ('lista_curso',compact('cursos'));
     }
 }

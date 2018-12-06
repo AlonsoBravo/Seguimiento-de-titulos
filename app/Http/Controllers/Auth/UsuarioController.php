@@ -13,4 +13,8 @@ class UsuarioController extends Controller{
         return view ('lista_proyecto',compact('proyectos'));
     }
 
+    public function administrativoIndex(){
+      $proyectos = Proyecto::all();
+      return view ('administrativo.lista_proyecto',compact('proyectos'));
+    }
 }

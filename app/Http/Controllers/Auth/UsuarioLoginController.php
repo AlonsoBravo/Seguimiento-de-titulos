@@ -46,15 +46,15 @@ class UsuarioLoginController extends Controller{
 
             case 1:
                 if(Auth::guard('usuario')->attempt(['USU_RUT' => $request->rut, 'password'=> $request->password], $request->remember)){
-                    $sessionUsuario = session(['autenticado' => $tipoUsuario]);
-                    return redirect()->intended(route('prueba'));
+                    $sessionUsuario = session(['autenticado' => $tipoUsuario,'nombreUsuario' =>$usuNombre]);
+                    return redirect()->intended(route('administrativo.proyectos'));
                 }
                 return redirect()->back()->withInput($request->only('rut','remember'));
             break;
 
             case 2:
                 if(Auth::guard('usuario')->attempt(['USU_RUT' => $request->rut, 'password'=> $request->password], $request->remember)){
-                    $sessionUsuario = session(['autenticado' => $tipoUsuario]);
+                    $sessionUsuario = session(['autenticado' => $tipoUsuario, 'nombreUsuario' =>$usuNombre]);
                     return redirect()->intended(route('alumno'));
                 }
                 return redirect()->back()->withInput($request->only('rut','remember'));
