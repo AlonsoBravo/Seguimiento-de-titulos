@@ -14,9 +14,9 @@
     </div>
     <div class="row">
         <div class="col-md-3"><label>Integrantes:</label></div>
-        <div class="col-md-9">    
+        <div class="col-md-9">
             @foreach($alumnos as $alu)
-                <span>{{ $alu->USU_NOMBRE }} {{ $alu->USU_APATERNO }} {{ $alu->USU_AMATERNO }}</span>
+                <span>{{ $alu->USU_NOMBRE}} {{ $alu->USU_APATERNO }} {{ $alu->USU_AMATERNO}}</span><br>
             @endforeach
         </div>
     </div>
@@ -27,7 +27,7 @@
             <div class="col-md-1" style="padding:10px;"><label>Semana N° {{ $sem }}</label></div>
             <div class="col-md-3" style="padding:10px;"><a href="/registro_hito/{{ $hit->HIT_ID }}-{{ $hit->HIT_PRO_ID}}" class="button">registrar hito</a></div>
         <?php $sem++; ?>
-        @endforeach            
+        @endforeach
 </div>
 
 @endforeach
@@ -35,4 +35,3 @@
 @include('layouts.footer')
 
 @yield('footer')
-  

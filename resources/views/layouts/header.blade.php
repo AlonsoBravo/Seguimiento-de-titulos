@@ -37,7 +37,7 @@
             document.getElementById('logout-form').submit();">Cerrar sesión
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
+            {{ csrf_field()}}
         </form>
         </div>
       </div>
@@ -46,7 +46,7 @@
        <li><a href="/lista_proyecto" class="button">Proyectos</a></li>
        <li><a href="/lista_curso" class="button">Cursos</a></li>
        <li><a href="/ingreso_proyecto" class="button">Crear Proyecto</a></li>
-       <li><a href="#" class="button">Menú</a>
+       <li><a href="#" class="button"><i class="far fa-user"></i>{{session('nombreUsuario')}}<i class="fas fa-angle-down"></i></a>
           <ul>
             <li><a href="#" class="button">Informes</a></li>
             <li><a href="#" class="button">Ayuda</a></li>

@@ -26,15 +26,22 @@ class UsuarioLoginController extends Controller{
         ]);
 
         $tipoUsuario = DB::table('usuarios')->where('USU_RUT', $request->rut)->value('USU_TIPO');
+        $nombreUsuario = DB::table('usuarios')->select('USU_NOMBRE','USU_APATERNO', 'USU_AMATERNO')->where('USU_RUT',$request->rut)->get();
+
+        $usuNombre ="";
+
+        foreach ($nombreUsuario as $nombre) {
+          $usuNombre .= ' '.$nombre->USU_NOMBRE.' '. $nombre->USU_APATERNO.' '.$nombre->USU_AMATERNO;
+        }
 
         switch ($tipoUsuario) {
             case 0:
                 if(Auth::guard('usuario')->attempt(['USU_RUT' => $request->rut, 'password'=> $request->password], $request->remember)){
                     $idProfesor = DB::table('usuarios')->where('USU_RUT', $request->rut)->value('USU_ID');
-                    $sessionUsuario = session(['autenticado' => $tipoUsuario, 'idProfesor' => $idProfesor]);
+                    $sessionUsuario = session(['autenticado' => $tipoUsuario, 'idProfesor' => $idProfesor, 'nombreUsuario' =>$usuNombre]);
                     return redirect()->intended(route('lista_curso'));
                 }
-                return redirect('/')->with('mensaje', 'error');
+                return redirect()->back()->withInput($request->only('rut','remember'))->with('mensaje', 'error');
             break;
 
             case 1:
@@ -60,6 +67,7 @@ class UsuarioLoginController extends Controller{
     }
 
     public function logout(Request $request){
+        Auth::logout();
         $request->session()->flush();
         return redirect ('/');
     }
