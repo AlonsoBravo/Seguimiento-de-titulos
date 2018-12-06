@@ -21,7 +21,7 @@
 				          <th>{{ $proy->PRO_NOMBRE }}</th>
 				          <th>{{ $proy->PRO_CUR_ID }}</th>
 				          <th>{{ $proy->PRO_SEMESTRE }}</th>
-				          <th>{{ $proy->PRO_PORCENTAJE_ACT . '%' }}</th>
+				          <th class="porcentaje">{{ $proy->PRO_PORCENTAJE_ACT . '%' }}</th>
 				          <th><a href="lista_hitos/{{ $proy->PRO_ID }}" class="button">registrar hito</a></th>
 				      </tr>
 				  @endforeach
@@ -52,6 +52,8 @@
 						</tbody>
 					</table> <!--.table-->
 				</div> <!--.lista_cursos-->
+
+<script src="js/semaforoProyectos.js"></script>
 
 @include('layouts.footer')
 
